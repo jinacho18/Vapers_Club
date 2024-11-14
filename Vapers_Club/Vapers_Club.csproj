@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -133,11 +141,76 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\almacenes.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\auditoria.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BaseDatos.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BaseDatos.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BaseDatos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BaseDatos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BaseDatos.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\categorias.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\clientes.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\correos.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\devoluciones.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\direcciones.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\entregas.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\estados.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\marcas.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\productos.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proveedores.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\rol.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\telefonos.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tipo_correos.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tipo_tel.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usuarios.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ViewModels\Asignarproducto.cs" />
     <Compile Include="Models\ViewModels\cActualizarCateg.cs" />
     <Compile Include="Models\ViewModels\cActualizarCliente.cs" />
     <Compile Include="Models\ViewModels\cActualizarEntrega.cs" />
-    <Compile Include="Models\ViewModels\cActualizarEvento.cs" />
     <Compile Include="Models\ViewModels\cActualizarMarca.cs" />
     <Compile Include="Models\ViewModels\cActualizarProducto.cs" />
     <Compile Include="Models\ViewModels\cActualizarProveedor.cs" />
@@ -145,7 +218,6 @@
     <Compile Include="Models\ViewModels\cAgregarCateg.cs" />
     <Compile Include="Models\ViewModels\cAgregarCliente.cs" />
     <Compile Include="Models\ViewModels\cAgregarEntrega.cs" />
-    <Compile Include="Models\ViewModels\cAgregarEvento.cs" />
     <Compile Include="Models\ViewModels\cAgregarMarca.cs" />
     <Compile Include="Models\ViewModels\cAgregarProducto.cs" />
     <Compile Include="Models\ViewModels\cAgregarProveedor.cs" />
@@ -160,6 +232,27 @@
     <Compile Include="Models\ViewModels\cListaUser.cs" />
     <Compile Include="Models\ViewModels\cLogin.cs" />
     <Compile Include="Models\ViewModels\Productoproveedores.cs" />
+    <Compile Include="Models\v_almaprod.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\v_clientes.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\v_entregas.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\v_prodprovee.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\v_productos.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\v_proveedoresprod.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\v_usuarios.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -171,8 +264,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\BaseDatos.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BaseDatos.Context.cs</LastGenOutput>
+      <DependentUpon>BaseDatos.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\BaseDatos.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BaseDatos.edmx</DependentUpon>
+      <LastGenOutput>BaseDatos.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\BaseDatos.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BaseDatos.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\BaseDatos.edmx.diagram">
+      <DependentUpon>BaseDatos.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -198,6 +308,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Cliente\mantCliente.cshtml" />
+    <Content Include="Views\Cliente\actualizarcliente.cshtml" />
+    <Content Include="Views\Cliente\agregarCliente.cshtml" />
+    <Content Include="Views\Cliente\consultarcliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -215,6 +329,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

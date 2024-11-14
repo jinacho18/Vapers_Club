@@ -1,0 +1,61 @@
+﻿@model Vapers_Club.Models.ViewModels.cListaCliente
+@{
+    ViewBag.Title = "consultarcliente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Consultar Cliente</h2>
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.nombre)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.nombre)
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.apellidos)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.apellidos)
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.telefono)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.telefono)
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.tipotel)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.tipotel)
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.correo)
+    </div>
+<div class="col-md-8">
+    @Html.DisplayFor(model => model.correo)
+</div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.tipoco)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.tipoco)
+    </div>
+</div>
+
+    <br />
+    <input type="button" value="Volver" class="btn btn-default btn-block btn-lg" onclick="document.location.href='@Url.Content("~/Cliente/mantCliente")'" />

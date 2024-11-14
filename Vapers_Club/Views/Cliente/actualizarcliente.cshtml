@@ -1,0 +1,105 @@
+﻿@model Vapers_Club.Models.ViewModels.cActualizarCliente
+@{
+    ViewBag.Title = "actualizarcliente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Actualizar Cliente</h2>
+<br />
+<br />
+
+@if (ViewBag.ValorMensaje == 1)
+{
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title">Mensaje</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success">@ViewBag.MensajeProceso</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    if (ViewBag.ValorMensaje == 0)
+    {
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Mensaje</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger">@ViewBag.MensajeProceso</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+@using (Html.BeginForm("actualizarcliente", "Cliente", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-4">
+            <input type="submit" class="btn btn-success btn-block btn-lg" value="Actualizar Cliente" />
+            <br />
+            <input type="button" value="Volver" class="btn btn-default btn-block btn-lg" onclick="document.location.href='@Url.Content("~/Cliente/mantCliente")'" style="background-color: #00ADA7; color: #ffffff" />
+        </div>
+        <div class="col-md-8">
+            @Html.HiddenFor(u=>u.id)
+            @Html.LabelFor(u => u.nombre)
+            @Html.TextBoxFor(u => u.nombre, new { @class = "form-control" })
+            @Html.ValidationMessage("nombre")
+            <br /><br />
+            @Html.LabelFor(u => u.apellidos)
+            @Html.TextBoxFor(u => u.apellidos, new { @class = "form-control" })
+            @Html.ValidationMessage("apellidos")
+            <br /><br />
+            @Html.LabelFor(u => u.correo)
+            @Html.TextBoxFor(u => u.correo, new { @class = "form-control" })
+            @Html.ValidationMessage("correo")
+            <br /><br />
+            @Html.LabelFor(u => u.tipoc)
+            @Html.DropDownListFor(u => u.tipoc, new List<SelectListItem>
+       {
+                    new SelectListItem() { Text = "Personal", Value = "1" },
+                    new SelectListItem() { Text = "Empresarial", Value = "2" },
+                    new SelectListItem() { Text = "Otro", Value = "3" }
+            }, new { @class = "form-control" })
+            @Html.ValidationMessage("tipoc")
+            <br /><br />
+            @Html.LabelFor(u => u.telefono)
+            @Html.TextBoxFor(u => u.telefono, new { @class = "form-control" })
+            @Html.ValidationMessage("telefono")
+            <br /><br />
+            @Html.LabelFor(u => u.tipot)
+            @Html.DropDownListFor(u => u.tipot, new List<SelectListItem>
+       {
+                    new SelectListItem() { Text = "Personal", Value = "1" },
+                    new SelectListItem() { Text = "Trabajo", Value = "2" },
+                    new SelectListItem() { Text = "Casa", Value = "3" },
+                    new SelectListItem() { Text = "Otro", Value = "4" }
+            }, new { @class = "form-control" })
+            @Html.ValidationMessage("tipot")
+            <br /><br />
+        </div>
+    </div>
+}
+@section scripts{
+    <script type="text/javascript">
+        $('#myModal').modal('show');
+    </script>
+}
+
