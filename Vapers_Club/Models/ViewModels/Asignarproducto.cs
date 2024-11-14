@@ -9,6 +9,7 @@ namespace Vapers_Club.Models.ViewModels
     public class Asignarproducto
     {
         public int id { set; get; }
+
         [Required]
         public string nombre { set; get; }
     }

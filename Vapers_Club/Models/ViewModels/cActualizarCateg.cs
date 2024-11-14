@@ -9,6 +9,7 @@ namespace Vapers_Club.Models.ViewModels
     public class cActualizarCateg
     {
         public int id { set; get; }
+
         [Required]
         [Display(Name = "Nombre de la Categoria")]
         public string nombre { set; get; }

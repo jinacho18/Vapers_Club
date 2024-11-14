@@ -12,7 +12,7 @@ namespace Vapers_Club.Models.ViewModels
         [Display(Name = "Usuario")]
         public int userusuario { set; get; }
         [Required]
-        [Display(Name = "Contra")]
+        [Display(Name = "Contraseña")]
         public string ctrUsuario { set; get; }
     }
 }
