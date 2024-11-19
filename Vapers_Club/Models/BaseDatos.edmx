@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ProyectoMDSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ProyectoMDSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="almacenes">
           <Key>
             <PropertyRef Name="id" />
@@ -251,6 +251,28 @@ warning 6002: The table/view 'ProyectoMDS.dbo.v_productos' does not have a prima
           <Property Name="cantidad" Type="int" Nullable="false" />
           <Property Name="Nombre_Marca" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Nombre_Categ" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ProyectoMDS.dbo.v_proveedores' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_proveedores">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="nombre" />
+            <PropertyRef Name="telefono" />
+            <PropertyRef Name="tipotel" />
+            <PropertyRef Name="desc_tel" />
+            <PropertyRef Name="correo" />
+            <PropertyRef Name="tipoc" />
+            <PropertyRef Name="desc_correos" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="telefono" Type="int" Nullable="false" />
+          <Property Name="tipotel" Type="int" Nullable="false" />
+          <Property Name="desc_tel" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="tipoc" Type="int" Nullable="false" />
+          <Property Name="desc_correos" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'ProyectoMDS.dbo.v_proveedoresprod' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -669,6 +691,18 @@ warning 6002: The table/view 'ProyectoMDS.dbo.v_usuarios' does not have a primar
     [v_productos].[Nombre_Categ] AS [Nombre_Categ]
     FROM [dbo].[v_productos] AS [v_productos]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_proveedores" EntityType="Self.v_proveedores" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_proveedores].[id] AS [id], 
+    [v_proveedores].[nombre] AS [nombre], 
+    [v_proveedores].[telefono] AS [telefono], 
+    [v_proveedores].[tipotel] AS [tipotel], 
+    [v_proveedores].[desc_tel] AS [desc_tel], 
+    [v_proveedores].[correo] AS [correo], 
+    [v_proveedores].[tipoc] AS [tipoc], 
+    [v_proveedores].[desc_correos] AS [desc_correos]
+    FROM [dbo].[v_proveedores] AS [v_proveedores]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_proveedoresprod" EntityType="Self.v_proveedoresprod" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_proveedoresprod].[nombre] AS [nombre], 
@@ -763,8 +797,7 @@ warning 6002: The table/view 'ProyectoMDS.dbo.v_usuarios' does not have a primar
             <End Role="correos" EntitySet="correos" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProyectoMDSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1413,22 +1446,43 @@ warning 6002: The table/view 'ProyectoMDS.dbo.v_usuarios' does not have a primar
             <Parameter Name="tipot" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_eliminaralmacen">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_eliminarcliente">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_eliminarproducto">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_eliminarproductoproveedor">
             <Parameter Name="id" Mode="In" Type="Int32" />
             <Parameter Name="producto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_eliminarproveedor">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="v_proveedores" EntityType="ProyectoMDSModel.v_proveedores" />
         </EntityContainer>
+        <EntityType Name="v_proveedores">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="nombre" />
+            <PropertyRef Name="telefono" />
+            <PropertyRef Name="tipotel" />
+            <PropertyRef Name="desc_tel" />
+            <PropertyRef Name="correo" />
+            <PropertyRef Name="tipoc" />
+            <PropertyRef Name="desc_correos" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="Int32" Nullable="false" />
+          <Property Name="tipotel" Type="Int32" Nullable="false" />
+          <Property Name="desc_tel" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tipoc" Type="Int32" Nullable="false" />
+          <Property Name="desc_correos" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1704,6 +1758,20 @@ warning 6002: The table/view 'ProyectoMDS.dbo.v_usuarios' does not have a primar
           <FunctionImportMapping FunctionImportName="sp_eliminarproducto" FunctionName="ProyectoMDSModel.Store.sp_eliminarproducto" />
           <FunctionImportMapping FunctionImportName="sp_eliminarproductoproveedor" FunctionName="ProyectoMDSModel.Store.sp_eliminarproductoproveedor" />
           <FunctionImportMapping FunctionImportName="sp_eliminarproveedor" FunctionName="ProyectoMDSModel.Store.sp_eliminarproveedor" />
+          <EntitySetMapping Name="v_proveedores">
+            <EntityTypeMapping TypeName="ProyectoMDSModel.v_proveedores">
+              <MappingFragment StoreEntitySet="v_proveedores">
+                <ScalarProperty Name="desc_correos" ColumnName="desc_correos" />
+                <ScalarProperty Name="tipoc" ColumnName="tipoc" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="desc_tel" ColumnName="desc_tel" />
+                <ScalarProperty Name="tipotel" ColumnName="tipotel" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

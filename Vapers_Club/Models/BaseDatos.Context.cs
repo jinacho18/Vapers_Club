@@ -51,6 +51,7 @@ namespace Vapers_Club.Models
         public virtual DbSet<v_productos> v_productos { get; set; }
         public virtual DbSet<v_proveedoresprod> v_proveedoresprod { get; set; }
         public virtual DbSet<v_usuarios> v_usuarios { get; set; }
+        public virtual DbSet<v_proveedores> v_proveedores { get; set; }
     
         public virtual int sp_actualizarcliente(Nullable<int> id, string nombre, string apellidos, string correo, Nullable<int> tipo, Nullable<int> telefono, Nullable<int> tipot)
         {
