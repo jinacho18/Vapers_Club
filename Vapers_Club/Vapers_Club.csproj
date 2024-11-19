@@ -247,9 +247,6 @@
     <Compile Include="Models\v_productos.cs">
       <DependentUpon>BaseDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\v_proveedores.cs">
-      <DependentUpon>BaseDatos.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\v_proveedoresprod.cs">
       <DependentUpon>BaseDatos.tt</DependentUpon>
     </Compile>
@@ -315,10 +312,6 @@
     <Content Include="Views\Cliente\actualizarcliente.cshtml" />
     <Content Include="Views\Cliente\agregarCliente.cshtml" />
     <Content Include="Views\Cliente\consultarcliente.cshtml" />
-    <Content Include="Views\Proveedor\mantProveedor.cshtml" />
-    <Content Include="Views\Proveedor\agregarProveedor.cshtml" />
-    <Content Include="Views\Proveedor\actualizarproveedor.cshtml" />
-    <Content Include="Views\Proveedor\consultarproveedor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
