@@ -1,0 +1,21 @@
+﻿@model Vapers_Club.Models.ViewModels.cListaMarca
+@{
+    ViewBag.Title = "consultarMarca";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Consultar Marca</h2>
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.nombre)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.nombre)
+    </div>
+</div>
+
+<br />
+<input type="button" value="Volver" class="btn btn-default btn-block btn-lg" onclick="document.location.href='@Url.Content("~/Marca/mantMarca")'" />

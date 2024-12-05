@@ -1,0 +1,49 @@
+﻿@model List<Vapers_Club.Models.ViewModels.cListaProveedores>
+@{
+    ViewBag.Title = "mantProveedor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Proveedores</h2>
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <input type="button" class="btn btn-primary btn-block btn-lg" onclick="document.location.href='@Url.Content("~/Proveedor/agregarProveedor")'" value="Nuevo Proveedor" />
+    </div>
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Identificación</th>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>Tipo Teléfono</th>
+                    <th>Correo</th>
+                    <th>Tipo de Contacto</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var fila in Model)
+                {
+                    <tr>
+                        <td>@fila.id</td>
+                        <td>@fila.nombre</td>
+                        <td>@fila.telefono</td>
+                        <td>@fila.tipot</td>
+                        <td>@fila.correo</td>
+                        <td>@fila.tipoc</td>
+                        <td>
+                            <input type="button" value="Consultar" class="btn btn-default" onclick="document.location.href='@Url.Content("~/Proveedor/consultarProveedor/"+fila.id)'" />
+                            <input type="button" value="Editar" class="btn btn-primary" onclick="document.location.href='@Url.Content("~/Proveedor/actualizarProveedor/"+fila.id)'" />
+                            <input type="button" value="Eliminar" class="btn btn-danger" onclick="document.location.href='@Url.Content("~/Proveedor/eliminarProveedor/"+fila.id)'" />
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <input type="button" value="Menu" class="btn btn-primary" style="background-color: #00ADA7" onclick="document.location.href='@Url.Content("~/Home/Menu")'" />
+    </div>
+</div>

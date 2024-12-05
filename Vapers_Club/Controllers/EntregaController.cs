@@ -14,7 +14,7 @@ namespace Vapers_Club.Controllers
         public ActionResult mantEntrega()
         {
             List<cListaEntrega> lista = null;
-            using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+            using (BaseDatosEntities db = new BaseDatosEntities())
             {
                 lista = (from en in db.v_entregas
                          select new cListaEntrega
@@ -42,7 +42,7 @@ namespace Vapers_Club.Controllers
                 {
                     return View(ae);
                 }
-                using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+                using (BaseDatosEntities db = new BaseDatosEntities())
                 {
                     db.sp_agregarentrega(ae.fecha, ae.idp, ae.cantidad, 1);
                     db.SaveChanges();
@@ -62,7 +62,7 @@ namespace Vapers_Club.Controllers
         public ActionResult actualizarentrega(int id)
         {
             cActualizarEntrega ae = new cActualizarEntrega();
-            using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+            using (BaseDatosEntities db = new BaseDatosEntities())
             {
                 var aes = db.v_entregas.FirstOrDefault(u => u.id == id);
                 ae.id = aes.id;
@@ -82,7 +82,7 @@ namespace Vapers_Club.Controllers
                 {
                     return View(aes);
                 }
-                using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+                using (BaseDatosEntities db = new BaseDatosEntities())
                 {
                     db.sp_actualizarentrega(aes.id, aes.fecha, aes.idp, aes.cantidad, aes.estado);
                     db.SaveChanges();
@@ -102,7 +102,7 @@ namespace Vapers_Club.Controllers
         public ActionResult consultarentrega(int id)
         {
             cListaEntrega lista = new cListaEntrega();
-            using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+            using (BaseDatosEntities db = new BaseDatosEntities())
             {
                 var listas = db.v_entregas.FirstOrDefault(u=>u.id==id);
                 lista.id = listas.id;
@@ -116,7 +116,7 @@ namespace Vapers_Club.Controllers
         [HttpGet]
         public ActionResult eliminarentrega(int id)
         {
-            using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+            using (BaseDatosEntities db = new BaseDatosEntities())
             {
                 var entregas = db.entregas.Find(id);
                 db.entregas.Remove(entregas);

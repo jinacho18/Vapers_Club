@@ -14,7 +14,7 @@ namespace Vapers_Club.Controllers
         public ActionResult mantCateg()
         {
             List<cListaCateg> lista = null;
-            using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+            using (BaseDatosEntities db = new BaseDatosEntities())
             {
                 lista = (from ca in db.categorias
                          select new cListaCateg
@@ -39,7 +39,7 @@ namespace Vapers_Club.Controllers
                 {
                     return View(ac);
                 }
-                using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+                using (BaseDatosEntities db = new BaseDatosEntities())
                 {
                     categorias ca = new categorias();
                     ca.nombre = ac.nombre;
@@ -61,7 +61,7 @@ namespace Vapers_Club.Controllers
         public ActionResult actualizarcateg(int id)
         {
             cActualizarCateg ca = new cActualizarCateg();
-            using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+            using (BaseDatosEntities db = new BaseDatosEntities())
             {
                 var cas = db.categorias.Find(id);
                 ca.id = cas.id;
@@ -78,7 +78,7 @@ namespace Vapers_Club.Controllers
                 {
                     return View(cas);
                 }
-                using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+                using (BaseDatosEntities db = new BaseDatosEntities())
                 {
                     var ca = db.categorias.Find(cas.id);
                     ca.id = cas.id;
@@ -101,7 +101,7 @@ namespace Vapers_Club.Controllers
         public ActionResult consultarcateg(int id)
         {
             cListaCateg lista = new cListaCateg();
-            using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+            using (BaseDatosEntities db = new BaseDatosEntities())
             {
                 var listas = db.categorias.Find(id);
                 lista.id = listas.id;
@@ -112,7 +112,7 @@ namespace Vapers_Club.Controllers
         [HttpGet]
         public ActionResult eliminarcateg(int id)
         {
-            using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+            using (BaseDatosEntities db = new BaseDatosEntities())
             {
                 var categs = db.categorias.Find(id);
                 db.categorias.Remove(categs);

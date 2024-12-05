@@ -14,7 +14,7 @@ namespace Vapers_Club.Controllers
         public ActionResult mantMarca()
         {
             List<cListaMarca> lista = null;
-            using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+            using (BaseDatosEntities db = new BaseDatosEntities())
             {
                 lista = (from ma in db.marcas
                          select new cListaMarca
@@ -39,7 +39,7 @@ namespace Vapers_Club.Controllers
                 {
                     return View(am);
                 }
-                using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+                using (BaseDatosEntities db = new BaseDatosEntities())
                 {
                     marcas ma = new marcas();
                     ma.nombre = am.nombre;
@@ -61,7 +61,7 @@ namespace Vapers_Club.Controllers
         public ActionResult actualizarmarca(int id)
         {
             cActualizarMarca am = new cActualizarMarca();
-            using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+            using (BaseDatosEntities db = new BaseDatosEntities())
             {
                 var ams = db.marcas.Find(id);
                 am.id = ams.id;
@@ -78,7 +78,7 @@ namespace Vapers_Club.Controllers
                 {
                     return View(ams);
                 }
-                using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+                using (BaseDatosEntities db = new BaseDatosEntities())
                 {
                     var am = db.marcas.Find(ams.id);
                     am.id = ams.id;
@@ -101,7 +101,7 @@ namespace Vapers_Club.Controllers
         public ActionResult consultarmarca(int id)
         {
             cListaMarca lista = new cListaMarca();
-            using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+            using (BaseDatosEntities db = new BaseDatosEntities())
             {
                 var listas = db.marcas.Find(id);
                 lista.id = listas.id;
@@ -112,7 +112,7 @@ namespace Vapers_Club.Controllers
         [HttpGet]
         public ActionResult eliminarmarca(int id)
         {
-            using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+            using (BaseDatosEntities db = new BaseDatosEntities())
             {
                 var marcas = db.marcas.Find(id);
                 db.marcas.Remove(marcas);

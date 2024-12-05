@@ -1,0 +1,46 @@
+﻿@model List<Vapers_Club.Models.ViewModels.cListaEntrega>
+@{
+    ViewBag.Title = "mantEntrega";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Entregas</h2>
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <input type="button" class="btn btn-primary btn-block btn-lg" onclick="document.location.href='@Url.Content("~/Entrega/agregarEntrega")'" value="Nueva Entrega" />
+    </div>
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Fecha</th>
+                    <th>Producto</th>
+                    <th>Estado</th>
+                    <th>Cantidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var fila in Model)
+                {
+                    <tr>
+                        <td>@fila.id</td>
+                        <td>@fila.fecha.ToString("dd/MM/yyyy")</td>
+                        <td>@fila.prodnomb</td>
+                        <td>@fila.estado</td>
+                        <td>@fila.cantidad</td>
+                        <td>
+                            <input type="button" value="Consultar" class="btn btn-default" onclick="document.location.href='@Url.Content("~/Entrega/consultarentrega/"+fila.id)'" />
+                            <input type="button" value="Editar" class="btn btn-primary" onclick="document.location.href='@Url.Content("~/Entrega/actualizarentrega/"+fila.id)'" />
+                            <input type="button" value="Eliminar" class="btn btn-danger" onclick="document.location.href='@Url.Content("~/Entrega/eliminarentrega/"+fila.id)'" />
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <input type="button" value="Menú" class="btn btn-primary" style="background-color: #00ADA7" onclick="document.location.href='@Url.Content("~/Home/Menu")'" />
+    </div>
+</div>

@@ -14,7 +14,7 @@ namespace Vapers_Club.Controllers
         public ActionResult mantProveedor()
         {
             List<cListaProveedores> lista = null;
-            using (BaseDatosEntities db = new ProyectoBBD2Entities())
+            using (BaseDatosEntities db = new BaseDatosEntities())
             {
                 lista = (from pr in db.v_proveedores
                          select new cListaProveedores
@@ -43,7 +43,7 @@ namespace Vapers_Club.Controllers
                 {
                     return View(ap);
                 }
-                using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+                using (BaseDatosEntities db = new BaseDatosEntities())
                 {
                     db.sp_agregarproveedores(ap.nombre,ap.correo,ap.tipoc,ap.telefono,ap.tipot);
                     db.SaveChanges();
@@ -63,7 +63,7 @@ namespace Vapers_Club.Controllers
         public ActionResult actualizarproveedor(int id)
         {
             cActualizarProveedor ap = new cActualizarProveedor();
-            using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+            using (BaseDatosEntities db = new BaseDatosEntities())
             {
                 var aps = db.v_proveedores.FirstOrDefault(u => u.id == id);
                 ap.id = aps.id;
@@ -84,7 +84,7 @@ namespace Vapers_Club.Controllers
                 {
                     return View(aps);
                 }
-                using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+                using (BaseDatosEntities db = new BaseDatosEntities())
                 {
                     db.sp_actualizarproveedores(aps.id,aps.nombre,aps.correo,aps.tipoc,aps.telefono,aps.tipot);
                     db.SaveChanges();
@@ -104,7 +104,7 @@ namespace Vapers_Club.Controllers
         public ActionResult consultarproveedor(int id)
         {
             cListaProveedores lista = new cListaProveedores();
-            using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+            using (BaseDatosEntities db = new BaseDatosEntities())
             {
                 var listas = db.v_proveedores.FirstOrDefault(u=>u.id==id);
                 lista.id = listas.id;
@@ -119,7 +119,7 @@ namespace Vapers_Club.Controllers
         [HttpGet]
         public ActionResult eliminarproveedor(int id)
         {
-            using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+            using (BaseDatosEntities db = new BaseDatosEntities())
             {
                 db.sp_eliminarproveedor(id);
                 db.SaveChanges();
@@ -129,8 +129,8 @@ namespace Vapers_Club.Controllers
         [HttpGet]
         public ActionResult agregarpp(int id)
         {
-            asignarproducto ap = new asignarproducto();
-            using(ProyectoBBD2Entities db= new ProyectoBBD2Entities())
+            Asignarproducto ap = new Asignarproducto();
+            using(BaseDatosEntities db= new BaseDatosEntities())
             {
                 var aps = db.proveedores.Find(id);
                 ap.id = aps.id;
@@ -139,7 +139,7 @@ namespace Vapers_Club.Controllers
             return View(ap);
         }
         [HttpPost]
-        public ActionResult agregarpp(asignarproducto ap)
+        public ActionResult agregarpp(Asignarproducto ap)
         {
             try
             {
@@ -147,7 +147,7 @@ namespace Vapers_Club.Controllers
                 {
                     return View(ap);
                 }
-                using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+                using (BaseDatosEntities db = new BaseDatosEntities())
                 {
                     db.sp_agregarproductoproveedor(ap.id, ap.nombre);
                     db.SaveChanges();
@@ -166,12 +166,12 @@ namespace Vapers_Club.Controllers
         [HttpGet]
         public ActionResult consultarproductos(int id)
         {
-            List<productoproveedores> lista = null;
-            using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+            List<Productoproveedores> lista = null;
+            using (BaseDatosEntities db = new BaseDatosEntities())
             {
                 lista = (from p in db.v_prodprovee
                          where p.id == id
-                         select new productoproveedores
+                         select new Productoproveedores
                          {
                              id=p.id,
                              nombre = p.nombre
@@ -182,7 +182,7 @@ namespace Vapers_Club.Controllers
         [HttpGet]
         public ActionResult eliminaraprodpr(int id, string ip)
         {
-            using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+            using (BaseDatosEntities db = new BaseDatosEntities())
             {
                 db.sp_eliminarproductoproveedor(id,ip);
                 db.SaveChanges();

@@ -1,0 +1,29 @@
+﻿@model List<Vapers_Club.Models.ViewModels.Productoproveedores>
+@{
+    ViewBag.Title = "Consultar Proveedores";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Proveedores</h2>
+<br />
+<br />
+<div class="row">
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Proveedor</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var fila in Model)
+                {
+                    <tr>
+                        <td>@fila.nombre</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <input type="button" value="Volver" class="btn btn-default btn-block btn-lg" onclick="document.location.href='@Url.Content("~/Producto/mantProducto")'" />
+    </div>
+</div>

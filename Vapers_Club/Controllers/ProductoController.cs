@@ -14,7 +14,7 @@ namespace Vapers_Club.Controllers
         public ActionResult mantProducto()
         {
             List<cListaProducto> lista = null;
-            using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+            using (BaseDatosEntities db = new BaseDatosEntities())
             {
                 lista = (from pr in db.v_productos
                          select new cListaProducto
@@ -43,9 +43,9 @@ namespace Vapers_Club.Controllers
                 {
                     return View(ap);
                 }
-                using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+                using (BaseDatosEntities db = new BaseDatosEntities())
                 {
-                    db.sp_agregarproducto(ap.nombre, ap.marca, ap.categ, ap.cantidad, ap.precio);
+                    db.sp_agregarproducto(ap.nombre, ap.marca, ap.categ, ap.cantidad, ap.codigo, ap.unidadmedida, ap.vencimiento, ap.precio);
                     db.SaveChanges();
                     ViewBag.ValorMensaje = 1;
                     ViewBag.MensajeProceso = "Producto agregado correctamente";
@@ -63,7 +63,7 @@ namespace Vapers_Club.Controllers
         public ActionResult actualizarproducto(int id)
         {
             cActualizarProducto ap = new cActualizarProducto();
-            using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+            using (BaseDatosEntities db = new BaseDatosEntities())
             {
                 var aps = db.v_productos.FirstOrDefault(u=>u.id==id);
                 ap.id = aps.id;
@@ -84,9 +84,9 @@ namespace Vapers_Club.Controllers
                 {
                     return View(aps);
                 }
-                using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+                using (BaseDatosEntities db = new BaseDatosEntities())
                 {
-                    db.sp_actualizarproducto(aps.id, aps.nombre, aps.marca, aps.categ, aps.cantidad, aps.precio);
+                    db.sp_actualizarproducto(aps.id, aps.nombre, aps.marca, aps.categ, aps.cantidad, aps.codigo, aps.unidadmedida, aps.vencimiento, aps.precio);
                     db.SaveChanges();
                     ViewBag.ValorMensaje = 1;
                     ViewBag.MensajeProceso = "Producto actualizado correctamente";
@@ -104,7 +104,7 @@ namespace Vapers_Club.Controllers
         public ActionResult consultarproducto(int id)
         {
             cListaProducto lista = new cListaProducto();
-            using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+            using (BaseDatosEntities db = new BaseDatosEntities())
             {
                 var listas = db.v_productos.FirstOrDefault(u => u.id == id);
                 lista.id = listas.id;
@@ -119,12 +119,12 @@ namespace Vapers_Club.Controllers
         [HttpGet]
         public ActionResult consultarproveedores(int id)
         {
-            List<productoproveedores> lista = null;
-            using(ProyectoBBD2Entities db= new ProyectoBBD2Entities())
+            List<Productoproveedores> lista = null;
+            using(BaseDatosEntities db = new BaseDatosEntities())
             {
                 lista = (from p in db.v_proveedoresprod
                          where p.id==id
-                         select new productoproveedores
+                         select new Productoproveedores
                          {
                              nombre = p.nombre
                          }).ToList();
@@ -134,7 +134,7 @@ namespace Vapers_Club.Controllers
         [HttpGet]
         public ActionResult eliminarproducto(int id)
         {
-            using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+            using (BaseDatosEntities db = new BaseDatosEntities())
             {
                 db.sp_eliminarproducto(id);
                 db.SaveChanges();

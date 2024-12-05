@@ -14,7 +14,7 @@ namespace Vapers_Club.Controllers
         public ActionResult mantUser()
         {
             List<cListaUser> lista = null;
-            using (ProyectoBBD2Entities db = new ProyectoBBD2Entities())
+            using (BaseDatosEntities db = new BaseDatosEntities())
             {
                 lista = (from user in db.v_usuarios
                          select new cListaUser
@@ -39,7 +39,7 @@ namespace Vapers_Club.Controllers
                 {
                     return View(au);
                 }
-                using(ProyectoBBD2Entities db= new ProyectoBBD2Entities())
+                using(BaseDatosEntities db = new BaseDatosEntities())
                 {
                     usuarios us = new usuarios();
                     us.cedula = au.cedula;
@@ -63,7 +63,7 @@ namespace Vapers_Club.Controllers
         public ActionResult actualizaruser(int id)
         {
             cActualizarUser au = new cActualizarUser();
-            using(ProyectoBBD2Entities db= new ProyectoBBD2Entities())
+            using(BaseDatosEntities db = new BaseDatosEntities())
             {
                 var aus = db.usuarios.Find(id);
                 au.id = aus.id;
@@ -82,7 +82,7 @@ namespace Vapers_Club.Controllers
                 {
                     return View(aus);
                 }
-                using(ProyectoBBD2Entities db= new ProyectoBBD2Entities())
+                using(BaseDatosEntities db = new BaseDatosEntities())
                 {
                     var au = db.usuarios.Find(aus.id);
                     au.cedula = aus.cedula;
@@ -104,7 +104,7 @@ namespace Vapers_Club.Controllers
         [HttpGet]
         public ActionResult eliminarusuario(int id)
         {
-            using(ProyectoBBD2Entities db= new ProyectoBBD2Entities())
+            using(BaseDatosEntities db = new BaseDatosEntities())
             {
                 var users = db.usuarios.Find(id);
                 db.usuarios.Remove(users);

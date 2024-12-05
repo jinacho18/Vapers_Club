@@ -128,7 +128,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AgendaController.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\EntregaController.cs" />
@@ -222,7 +221,6 @@
     <Compile Include="Models\ViewModels\cAgregarProducto.cs" />
     <Compile Include="Models\ViewModels\cAgregarProveedor.cs" />
     <Compile Include="Models\ViewModels\cAgregarUser.cs" />
-    <Compile Include="Models\ViewModels\cListaAgenda.cs" />
     <Compile Include="Models\ViewModels\cListaCateg.cs" />
     <Compile Include="Models\ViewModels\cListaCliente.cs" />
     <Compile Include="Models\ViewModels\cListaEntrega.cs" />
@@ -245,6 +243,9 @@
       <DependentUpon>BaseDatos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\v_productos.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\v_proveedores.cs">
       <DependentUpon>BaseDatos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\v_proveedoresprod.cs">
@@ -312,6 +313,33 @@
     <Content Include="Views\Cliente\actualizarcliente.cshtml" />
     <Content Include="Views\Cliente\agregarCliente.cshtml" />
     <Content Include="Views\Cliente\consultarcliente.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Marca\mantMarca.cshtml" />
+    <Content Include="Views\Marca\agregarMarca.cshtml" />
+    <Content Include="Views\Marca\actualizarmarca.cshtml" />
+    <Content Include="Views\Marca\consultarmarca.cshtml" />
+    <Content Include="Views\Categoria\mantCateg.cshtml" />
+    <Content Include="Views\Categoria\agregarCateg.cshtml" />
+    <Content Include="Views\Categoria\actualizarcateg.cshtml" />
+    <Content Include="Views\Categoria\consultarcateg.cshtml" />
+    <Content Include="Views\Producto\mantProducto.cshtml" />
+    <Content Include="Views\Producto\agregarProducto.cshtml" />
+    <Content Include="Views\Producto\actualizarproducto.cshtml" />
+    <Content Include="Views\Producto\consultarproducto.cshtml" />
+    <Content Include="Views\Producto\consultarproveedores.cshtml" />
+    <Content Include="Views\User\mantUser.cshtml" />
+    <Content Include="Views\User\agregaruser.cshtml" />
+    <Content Include="Views\User\actualizaruser.cshtml" />
+    <Content Include="Views\Entrega\mantEntrega.cshtml" />
+    <Content Include="Views\Entrega\agregarEntrega.cshtml" />
+    <Content Include="Views\Entrega\actualizarentrega.cshtml" />
+    <Content Include="Views\Entrega\consultarentrega.cshtml" />
+    <Content Include="Views\Proveedor\mantProveedor.cshtml" />
+    <Content Include="Views\Proveedor\agregarProveedor.cshtml" />
+    <Content Include="Views\Proveedor\actualizarproveedor.cshtml" />
+    <Content Include="Views\Proveedor\consultarproveedor.cshtml" />
+    <Content Include="Views\Proveedor\agregarpp.cshtml" />
+    <Content Include="Views\Proveedor\consultarproductos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

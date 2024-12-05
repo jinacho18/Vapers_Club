@@ -1,0 +1,57 @@
+﻿@model Vapers_Club.Models.ViewModels.cListaProducto
+@{
+    ViewBag.Title = "Consultar Producto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Consultar Producto</h2>
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.nombre)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.nombre)
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.nombrem)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.nombrem)
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.nombrec)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.nombrec)
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.cantidad)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.cantidad)
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.precio)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.precio)
+    </div>
+</div>
+
+<br />
+<input type="button" value="Volver" class="btn btn-default btn-block btn-lg" onclick="document.location.href='@Url.Content("~/Producto/mantProducto")'" />

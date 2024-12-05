@@ -51,6 +51,7 @@ namespace Vapers_Club.Models
         public virtual DbSet<v_productos> v_productos { get; set; }
         public virtual DbSet<v_proveedoresprod> v_proveedoresprod { get; set; }
         public virtual DbSet<v_usuarios> v_usuarios { get; set; }
+        public virtual DbSet<v_proveedores> v_proveedores { get; set; }
     
         public virtual int sp_actualizarcliente(Nullable<int> id, string nombre, string apellidos, string correo, Nullable<int> tipo, Nullable<int> telefono, Nullable<int> tipot)
         {
@@ -357,6 +358,27 @@ namespace Vapers_Club.Models
                 new ObjectParameter("id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eliminarproveedor", idParameter);
+        }
+    
+        public virtual int sp_agregarentrega(Nullable<System.DateTime> fecha, string producto, Nullable<int> cantidad, Nullable<int> estado)
+        {
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("fecha", fecha) :
+                new ObjectParameter("fecha", typeof(System.DateTime));
+    
+            var productoParameter = producto != null ?
+                new ObjectParameter("producto", producto) :
+                new ObjectParameter("producto", typeof(string));
+    
+            var cantidadParameter = cantidad.HasValue ?
+                new ObjectParameter("cantidad", cantidad) :
+                new ObjectParameter("cantidad", typeof(int));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("estado", estado) :
+                new ObjectParameter("estado", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_agregarentrega", fechaParameter, productoParameter, cantidadParameter, estadoParameter);
         }
     }
 }

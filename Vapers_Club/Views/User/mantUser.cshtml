@@ -1,0 +1,39 @@
+﻿@model List<Vapers_Club.Models.ViewModels.cListaUser>
+@{
+    ViewBag.Title = "mantUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Usuarios</h2>
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <input type="button" class="btn btn-primary btn-block btn-lg" onclick="document.location.href='@Url.Content("~/User/agregaruser")'" value="Nuevo Usuario" />
+    </div>
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Identificacion</th>
+                    <th>Cedula</th>
+                    <th>Rol</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var fila in Model)
+                {
+                    <tr>
+                        <td>@fila.id</td>
+                        <td>@fila.cedula</td>
+                        <td>@fila.rol</td>
+                        <td><input type="button" value="Editar" class="btn btn-primary" onclick="document.location.href='@Url.Content("~/User/actualizaruser/"+fila.id)'" /></td>
+                        <td><input type="button" value="Eliminar" class="btn btn-danger" onclick="document.location.href='@Url.Content("~/User/eliminarusuario/"+fila.id)'" /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <input type="button" value="Menu" class="btn btn-primary" style="background-color: #00ADA7" onclick="document.location.href='@Url.Content("~/Home/Menu")'" />
+    </div>
+</div>
