@@ -17,13 +17,13 @@ namespace Vapers_Club.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tipo_correos()
         {
-            this.correos = new HashSet<correos>();
+            this.correos = new HashSet<correo>();
         }
     
         public int id { get; set; }
         public string desc_correos { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<correos> correos { get; set; }
+        public virtual ICollection<correo> correos { get; set; }
     }
 }

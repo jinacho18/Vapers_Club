@@ -15,10 +15,10 @@ namespace Vapers_Club.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class BaseDatosEntities : DbContext
+    public partial class BaseDatosEntities1 : DbContext
     {
-        public BaseDatosEntities()
-            : base("name=BaseDatosEntities")
+        public BaseDatosEntities1()
+            : base("name=BaseDatosEntities1")
         {
         }
     
@@ -27,31 +27,31 @@ namespace Vapers_Club.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<almacenes> almacenes { get; set; }
-        public virtual DbSet<auditoria> auditoria { get; set; }
-        public virtual DbSet<categorias> categorias { get; set; }
-        public virtual DbSet<clientes> clientes { get; set; }
-        public virtual DbSet<correos> correos { get; set; }
-        public virtual DbSet<devoluciones> devoluciones { get; set; }
-        public virtual DbSet<direcciones> direcciones { get; set; }
-        public virtual DbSet<entregas> entregas { get; set; }
-        public virtual DbSet<estados> estados { get; set; }
-        public virtual DbSet<marcas> marcas { get; set; }
-        public virtual DbSet<productos> productos { get; set; }
-        public virtual DbSet<proveedores> proveedores { get; set; }
-        public virtual DbSet<rol> rol { get; set; }
-        public virtual DbSet<telefonos> telefonos { get; set; }
+        public virtual DbSet<almacene> almacenes { get; set; }
+        public virtual DbSet<auditoria> auditorias { get; set; }
+        public virtual DbSet<categoria> categorias { get; set; }
+        public virtual DbSet<cliente> clientes { get; set; }
+        public virtual DbSet<correo> correos { get; set; }
+        public virtual DbSet<devolucione> devoluciones { get; set; }
+        public virtual DbSet<entrega> entregas { get; set; }
+        public virtual DbSet<estado> estados { get; set; }
+        public virtual DbSet<marca> marcas { get; set; }
+        public virtual DbSet<producto> productos { get; set; }
+        public virtual DbSet<proveedore> proveedores { get; set; }
+        public virtual DbSet<rol> rols { get; set; }
+        public virtual DbSet<telefono> telefonos { get; set; }
         public virtual DbSet<tipo_correos> tipo_correos { get; set; }
         public virtual DbSet<tipo_tel> tipo_tel { get; set; }
-        public virtual DbSet<usuarios> usuarios { get; set; }
+        public virtual DbSet<usuario> usuarios { get; set; }
         public virtual DbSet<v_almaprod> v_almaprod { get; set; }
         public virtual DbSet<v_clientes> v_clientes { get; set; }
+        public virtual DbSet<v_devolucion> v_devolucion { get; set; }
         public virtual DbSet<v_entregas> v_entregas { get; set; }
         public virtual DbSet<v_prodprovee> v_prodprovee { get; set; }
         public virtual DbSet<v_productos> v_productos { get; set; }
+        public virtual DbSet<v_proveedores> v_proveedores { get; set; }
         public virtual DbSet<v_proveedoresprod> v_proveedoresprod { get; set; }
         public virtual DbSet<v_usuarios> v_usuarios { get; set; }
-        public virtual DbSet<v_proveedores> v_proveedores { get; set; }
     
         public virtual int sp_actualizarcliente(Nullable<int> id, string nombre, string apellidos, string correo, Nullable<int> tipo, Nullable<int> telefono, Nullable<int> tipot)
         {
@@ -111,15 +111,15 @@ namespace Vapers_Club.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_actualizarentrega", ideParameter, fechaParameter, productoParameter, cantidadParameter, estadoParameter);
         }
     
-        public virtual int sp_actualizarmacenprod(string prod, string alma)
+        public virtual int sp_actualizarmacenprod(string prod, Nullable<int> alma)
         {
             var prodParameter = prod != null ?
                 new ObjectParameter("prod", prod) :
                 new ObjectParameter("prod", typeof(string));
     
-            var almaParameter = alma != null ?
+            var almaParameter = alma.HasValue ?
                 new ObjectParameter("alma", alma) :
-                new ObjectParameter("alma", typeof(string));
+                new ObjectParameter("alma", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_actualizarmacenprod", prodParameter, almaParameter);
         }
@@ -194,15 +194,15 @@ namespace Vapers_Club.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_actualizarproveedores", idParameter, nombreParameter, correoParameter, tipoParameter, telefonoParameter, tipotParameter);
         }
     
-        public virtual int sp_agregaralmacenprod(string prod, string alma)
+        public virtual int sp_agregaralmacenprod(string prod, Nullable<int> alma)
         {
             var prodParameter = prod != null ?
                 new ObjectParameter("prod", prod) :
                 new ObjectParameter("prod", typeof(string));
     
-            var almaParameter = alma != null ?
+            var almaParameter = alma.HasValue ?
                 new ObjectParameter("alma", alma) :
-                new ObjectParameter("alma", typeof(string));
+                new ObjectParameter("alma", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_agregaralmacenprod", prodParameter, almaParameter);
         }
@@ -234,6 +234,27 @@ namespace Vapers_Club.Models
                 new ObjectParameter("tipot", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_agregarclientes", nombreParameter, apellidosParameter, correoParameter, tipoParameter, telefonoParameter, tipotParameter);
+        }
+    
+        public virtual int sp_agregarentrega(Nullable<System.DateTime> fecha, string producto, Nullable<int> cantidad, Nullable<int> estado)
+        {
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("fecha", fecha) :
+                new ObjectParameter("fecha", typeof(System.DateTime));
+    
+            var productoParameter = producto != null ?
+                new ObjectParameter("producto", producto) :
+                new ObjectParameter("producto", typeof(string));
+    
+            var cantidadParameter = cantidad.HasValue ?
+                new ObjectParameter("cantidad", cantidad) :
+                new ObjectParameter("cantidad", typeof(int));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("estado", estado) :
+                new ObjectParameter("estado", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_agregarentrega", fechaParameter, productoParameter, cantidadParameter, estadoParameter);
         }
     
         public virtual int sp_agregarproducto(string nombre, string marca, string categ, Nullable<int> cantidad, Nullable<int> codigo, string unidadmedida, Nullable<System.DateTime> vencimiento, Nullable<decimal> precio)
@@ -311,15 +332,6 @@ namespace Vapers_Club.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_agregarproveedores", nombreParameter, correoParameter, tipoParameter, telefonoParameter, tipotParameter);
         }
     
-        public virtual int sp_eliminaralmacen(Nullable<int> id)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eliminaralmacen", idParameter);
-        }
-    
         public virtual int sp_eliminarcliente(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
@@ -327,6 +339,28 @@ namespace Vapers_Club.Models
                 new ObjectParameter("id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eliminarcliente", idParameter);
+        }
+    
+        public virtual int sp_eliminarmacenprod(Nullable<int> alma)
+        {
+            var almaParameter = alma.HasValue ?
+                new ObjectParameter("alma", alma) :
+                new ObjectParameter("alma", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eliminarmacenprod", almaParameter);
+        }
+    
+        public virtual int sp_eliminarmacenprod2(Nullable<int> alma, string prod)
+        {
+            var almaParameter = alma.HasValue ?
+                new ObjectParameter("alma", alma) :
+                new ObjectParameter("alma", typeof(int));
+    
+            var prodParameter = prod != null ?
+                new ObjectParameter("prod", prod) :
+                new ObjectParameter("prod", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eliminarmacenprod2", almaParameter, prodParameter);
         }
     
         public virtual int sp_eliminarproducto(Nullable<int> id)
@@ -358,27 +392,6 @@ namespace Vapers_Club.Models
                 new ObjectParameter("id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eliminarproveedor", idParameter);
-        }
-    
-        public virtual int sp_agregarentrega(Nullable<System.DateTime> fecha, string producto, Nullable<int> cantidad, Nullable<int> estado)
-        {
-            var fechaParameter = fecha.HasValue ?
-                new ObjectParameter("fecha", fecha) :
-                new ObjectParameter("fecha", typeof(System.DateTime));
-    
-            var productoParameter = producto != null ?
-                new ObjectParameter("producto", producto) :
-                new ObjectParameter("producto", typeof(string));
-    
-            var cantidadParameter = cantidad.HasValue ?
-                new ObjectParameter("cantidad", cantidad) :
-                new ObjectParameter("cantidad", typeof(int));
-    
-            var estadoParameter = estado.HasValue ?
-                new ObjectParameter("estado", estado) :
-                new ObjectParameter("estado", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_agregarentrega", fechaParameter, productoParameter, cantidadParameter, estadoParameter);
         }
     }
 }

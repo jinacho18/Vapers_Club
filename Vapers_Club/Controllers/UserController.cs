@@ -14,7 +14,7 @@ namespace Vapers_Club.Controllers
         public ActionResult mantUser()
         {
             List<cListaUser> lista = null;
-            using (BaseDatosEntities db = new BaseDatosEntities())
+            using (BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 lista = (from user in db.v_usuarios
                          select new cListaUser
@@ -39,9 +39,9 @@ namespace Vapers_Club.Controllers
                 {
                     return View(au);
                 }
-                using(BaseDatosEntities db = new BaseDatosEntities())
+                using(BaseDatosEntities1 db = new BaseDatosEntities1())
                 {
-                    usuarios us = new usuarios();
+                    usuario us = new usuario();
                     us.cedula = au.cedula;
                     us.contra = au.contra;
                     us.rol = au.rol;
@@ -63,7 +63,7 @@ namespace Vapers_Club.Controllers
         public ActionResult actualizaruser(int id)
         {
             cActualizarUser au = new cActualizarUser();
-            using(BaseDatosEntities db = new BaseDatosEntities())
+            using(BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 var aus = db.usuarios.Find(id);
                 au.id = aus.id;
@@ -82,7 +82,7 @@ namespace Vapers_Club.Controllers
                 {
                     return View(aus);
                 }
-                using(BaseDatosEntities db = new BaseDatosEntities())
+                using(BaseDatosEntities1 db = new BaseDatosEntities1())
                 {
                     var au = db.usuarios.Find(aus.id);
                     au.cedula = aus.cedula;
@@ -104,7 +104,7 @@ namespace Vapers_Club.Controllers
         [HttpGet]
         public ActionResult eliminarusuario(int id)
         {
-            using(BaseDatosEntities db = new BaseDatosEntities())
+            using(BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 var users = db.usuarios.Find(id);
                 db.usuarios.Remove(users);

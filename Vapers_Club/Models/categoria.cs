@@ -12,16 +12,18 @@ namespace Vapers_Club.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class correos
+    public partial class categoria
     {
-        public int id { get; set; }
-        public Nullable<int> id_cliente { get; set; }
-        public Nullable<int> id_proveedor { get; set; }
-        public string correo { get; set; }
-        public int tipo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public categoria()
+        {
+            this.productos = new HashSet<producto>();
+        }
     
-        public virtual clientes clientes { get; set; }
-        public virtual proveedores proveedores { get; set; }
-        public virtual tipo_correos tipo_correos { get; set; }
+        public int id { get; set; }
+        public string nombre { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<producto> productos { get; set; }
     }
 }

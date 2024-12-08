@@ -128,8 +128,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AlmacenController.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\DevolucionesController.cs" />
     <Compile Include="Controllers\EntregaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -140,7 +142,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\almacenes.cs">
+    <Compile Include="Models\almacene.cs">
       <DependentUpon>BaseDatos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\auditoria.cs">
@@ -161,40 +163,37 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BaseDatos.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\categorias.cs">
+    <Compile Include="Models\categoria.cs">
       <DependentUpon>BaseDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\clientes.cs">
+    <Compile Include="Models\cliente.cs">
       <DependentUpon>BaseDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\correos.cs">
+    <Compile Include="Models\correo.cs">
       <DependentUpon>BaseDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\devoluciones.cs">
+    <Compile Include="Models\devolucione.cs">
       <DependentUpon>BaseDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\direcciones.cs">
+    <Compile Include="Models\entrega.cs">
       <DependentUpon>BaseDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\entregas.cs">
+    <Compile Include="Models\estado.cs">
       <DependentUpon>BaseDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\estados.cs">
+    <Compile Include="Models\marca.cs">
       <DependentUpon>BaseDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\marcas.cs">
+    <Compile Include="Models\producto.cs">
       <DependentUpon>BaseDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\productos.cs">
-      <DependentUpon>BaseDatos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\proveedores.cs">
+    <Compile Include="Models\proveedore.cs">
       <DependentUpon>BaseDatos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\rol.cs">
       <DependentUpon>BaseDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\telefonos.cs">
+    <Compile Include="Models\telefono.cs">
       <DependentUpon>BaseDatos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tipo_correos.cs">
@@ -203,9 +202,10 @@
     <Compile Include="Models\tipo_tel.cs">
       <DependentUpon>BaseDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\usuarios.cs">
+    <Compile Include="Models\usuario.cs">
       <DependentUpon>BaseDatos.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModels\asignaralmacen.cs" />
     <Compile Include="Models\ViewModels\Asignarproducto.cs" />
     <Compile Include="Models\ViewModels\cActualizarCateg.cs" />
     <Compile Include="Models\ViewModels\cActualizarCliente.cs" />
@@ -214,6 +214,7 @@
     <Compile Include="Models\ViewModels\cActualizarProducto.cs" />
     <Compile Include="Models\ViewModels\cActualizarProveedor.cs" />
     <Compile Include="Models\ViewModels\cActualizarUser.cs" />
+    <Compile Include="Models\ViewModels\cAgregarAlmacen.cs" />
     <Compile Include="Models\ViewModels\cAgregarCateg.cs" />
     <Compile Include="Models\ViewModels\cAgregarCliente.cs" />
     <Compile Include="Models\ViewModels\cAgregarEntrega.cs" />
@@ -221,8 +222,15 @@
     <Compile Include="Models\ViewModels\cAgregarProducto.cs" />
     <Compile Include="Models\ViewModels\cAgregarProveedor.cs" />
     <Compile Include="Models\ViewModels\cAgregarUser.cs" />
+    <Compile Include="Models\ViewModels\cAlmacen.cs" />
+    <Compile Include="Models\ViewModels\cCreateDevolucion.cs" />
+    <Compile Include="Models\ViewModels\cDevolucion.cs" />
+    <Compile Include="Models\ViewModels\cEditAlmacen.cs" />
+    <Compile Include="Models\ViewModels\cEditDevolucion.cs" />
+    <Compile Include="Models\ViewModels\cListaAlmacenes.cs" />
     <Compile Include="Models\ViewModels\cListaCateg.cs" />
     <Compile Include="Models\ViewModels\cListaCliente.cs" />
+    <Compile Include="Models\ViewModels\cListaDevolucion.cs" />
     <Compile Include="Models\ViewModels\cListaEntrega.cs" />
     <Compile Include="Models\ViewModels\cListaMarca.cs" />
     <Compile Include="Models\ViewModels\cListaProducto.cs" />
@@ -234,6 +242,9 @@
       <DependentUpon>BaseDatos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\v_clientes.cs">
+      <DependentUpon>BaseDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\v_devolucion.cs">
       <DependentUpon>BaseDatos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\v_entregas.cs">
@@ -267,8 +278,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\BaseDatos.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BaseDatos.Context.cs</LastGenOutput>
       <DependentUpon>BaseDatos.edmx</DependentUpon>
+      <LastGenOutput>BaseDatos.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\BaseDatos.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -340,6 +351,19 @@
     <Content Include="Views\Proveedor\consultarproveedor.cshtml" />
     <Content Include="Views\Proveedor\agregarpp.cshtml" />
     <Content Include="Views\Proveedor\consultarproductos.cshtml" />
+    <Content Include="Views\Almacen\Index.cshtml" />
+    <Content Include="Views\Almacen\Create.cshtml" />
+    <Content Include="Views\Almacen\Update.cshtml" />
+    <Content Include="Views\Almacen\Details.cshtml" />
+    <Content Include="Views\Almacen\agregarpa.cshtml" />
+    <Content Include="Views\Almacen\consultarprodal.cshtml" />
+    <Content Include="Views\Devoluciones\Index.cshtml" />
+    <Content Include="Views\Devoluciones\CreateCliente.cshtml" />
+    <Content Include="Views\Devoluciones\CreateProveedor.cshtml" />
+    <Content Include="Views\Devoluciones\EditCliente.cshtml" />
+    <Content Include="Views\Devoluciones\EditProveedor.cshtml" />
+    <Content Include="Views\Devoluciones\DetailsCliente.cshtml" />
+    <Content Include="Views\Devoluciones\DetailsProveedor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

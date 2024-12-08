@@ -12,18 +12,18 @@ namespace Vapers_Club.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class marcas
+    public partial class marca
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public marcas()
+        public marca()
         {
-            this.productos = new HashSet<productos>();
+            this.productos = new HashSet<producto>();
         }
     
         public int id { get; set; }
         public string nombre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<productos> productos { get; set; }
+        public virtual ICollection<producto> productos { get; set; }
     }
 }

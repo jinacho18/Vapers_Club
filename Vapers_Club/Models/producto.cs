@@ -12,30 +12,34 @@ namespace Vapers_Club.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class proveedores
+    public partial class producto
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public proveedores()
+        public producto()
         {
-            this.correos = new HashSet<correos>();
-            this.devoluciones = new HashSet<devoluciones>();
-            this.direcciones = new HashSet<direcciones>();
-            this.telefonos = new HashSet<telefonos>();
-            this.productos = new HashSet<productos>();
+            this.entregas = new HashSet<entrega>();
+            this.almacenes = new HashSet<almacene>();
+            this.proveedores = new HashSet<proveedore>();
         }
     
         public int id { get; set; }
         public string nombre { get; set; }
+        public string descripcion { get; set; }
+        public int marca { get; set; }
+        public int categoria { get; set; }
+        public int cantidad { get; set; }
+        public int codigo { get; set; }
+        public string unidadmedida { get; set; }
+        public Nullable<System.DateTime> vencimiento { get; set; }
+        public decimal precio { get; set; }
     
+        public virtual categoria categoria1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<correos> correos { get; set; }
+        public virtual ICollection<entrega> entregas { get; set; }
+        public virtual marca marca1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<devoluciones> devoluciones { get; set; }
+        public virtual ICollection<almacene> almacenes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<direcciones> direcciones { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<telefonos> telefonos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<productos> productos { get; set; }
+        public virtual ICollection<proveedore> proveedores { get; set; }
     }
 }

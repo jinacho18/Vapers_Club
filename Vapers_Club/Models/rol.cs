@@ -17,13 +17,13 @@ namespace Vapers_Club.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public rol()
         {
-            this.usuarios = new HashSet<usuarios>();
+            this.usuarios = new HashSet<usuario>();
         }
     
         public int id { get; set; }
         public string desc_rol { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<usuarios> usuarios { get; set; }
+        public virtual ICollection<usuario> usuarios { get; set; }
     }
 }

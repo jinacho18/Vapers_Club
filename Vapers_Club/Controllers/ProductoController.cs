@@ -14,7 +14,7 @@ namespace Vapers_Club.Controllers
         public ActionResult mantProducto()
         {
             List<cListaProducto> lista = null;
-            using (BaseDatosEntities db = new BaseDatosEntities())
+            using (BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 lista = (from pr in db.v_productos
                          select new cListaProducto
@@ -43,7 +43,7 @@ namespace Vapers_Club.Controllers
                 {
                     return View(ap);
                 }
-                using (BaseDatosEntities db = new BaseDatosEntities())
+                using (BaseDatosEntities1 db = new BaseDatosEntities1())
                 {
                     db.sp_agregarproducto(ap.nombre, ap.marca, ap.categ, ap.cantidad, ap.codigo, ap.unidadmedida, ap.vencimiento, ap.precio);
                     db.SaveChanges();
@@ -63,7 +63,7 @@ namespace Vapers_Club.Controllers
         public ActionResult actualizarproducto(int id)
         {
             cActualizarProducto ap = new cActualizarProducto();
-            using (BaseDatosEntities db = new BaseDatosEntities())
+            using (BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 var aps = db.v_productos.FirstOrDefault(u=>u.id==id);
                 ap.id = aps.id;
@@ -84,7 +84,7 @@ namespace Vapers_Club.Controllers
                 {
                     return View(aps);
                 }
-                using (BaseDatosEntities db = new BaseDatosEntities())
+                using (BaseDatosEntities1 db = new BaseDatosEntities1())
                 {
                     db.sp_actualizarproducto(aps.id, aps.nombre, aps.marca, aps.categ, aps.cantidad, aps.codigo, aps.unidadmedida, aps.vencimiento, aps.precio);
                     db.SaveChanges();
@@ -104,7 +104,7 @@ namespace Vapers_Club.Controllers
         public ActionResult consultarproducto(int id)
         {
             cListaProducto lista = new cListaProducto();
-            using (BaseDatosEntities db = new BaseDatosEntities())
+            using (BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 var listas = db.v_productos.FirstOrDefault(u => u.id == id);
                 lista.id = listas.id;
@@ -120,7 +120,7 @@ namespace Vapers_Club.Controllers
         public ActionResult consultarproveedores(int id)
         {
             List<Productoproveedores> lista = null;
-            using(BaseDatosEntities db = new BaseDatosEntities())
+            using(BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 lista = (from p in db.v_proveedoresprod
                          where p.id==id
@@ -134,7 +134,7 @@ namespace Vapers_Club.Controllers
         [HttpGet]
         public ActionResult eliminarproducto(int id)
         {
-            using (BaseDatosEntities db = new BaseDatosEntities())
+            using (BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 db.sp_eliminarproducto(id);
                 db.SaveChanges();

@@ -17,13 +17,13 @@ namespace Vapers_Club.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tipo_tel()
         {
-            this.telefonos = new HashSet<telefonos>();
+            this.telefonos = new HashSet<telefono>();
         }
     
         public int id { get; set; }
         public string desc_tel { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<telefonos> telefonos { get; set; }
+        public virtual ICollection<telefono> telefonos { get; set; }
     }
 }

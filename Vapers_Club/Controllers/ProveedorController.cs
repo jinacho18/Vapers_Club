@@ -14,7 +14,7 @@ namespace Vapers_Club.Controllers
         public ActionResult mantProveedor()
         {
             List<cListaProveedores> lista = null;
-            using (BaseDatosEntities db = new BaseDatosEntities())
+            using (BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 lista = (from pr in db.v_proveedores
                          select new cListaProveedores
@@ -43,7 +43,7 @@ namespace Vapers_Club.Controllers
                 {
                     return View(ap);
                 }
-                using (BaseDatosEntities db = new BaseDatosEntities())
+                using (BaseDatosEntities1 db = new BaseDatosEntities1())
                 {
                     db.sp_agregarproveedores(ap.nombre,ap.correo,ap.tipoc,ap.telefono,ap.tipot);
                     db.SaveChanges();
@@ -63,7 +63,7 @@ namespace Vapers_Club.Controllers
         public ActionResult actualizarproveedor(int id)
         {
             cActualizarProveedor ap = new cActualizarProveedor();
-            using (BaseDatosEntities db = new BaseDatosEntities())
+            using (BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 var aps = db.v_proveedores.FirstOrDefault(u => u.id == id);
                 ap.id = aps.id;
@@ -84,7 +84,7 @@ namespace Vapers_Club.Controllers
                 {
                     return View(aps);
                 }
-                using (BaseDatosEntities db = new BaseDatosEntities())
+                using (BaseDatosEntities1 db = new BaseDatosEntities1())
                 {
                     db.sp_actualizarproveedores(aps.id,aps.nombre,aps.correo,aps.tipoc,aps.telefono,aps.tipot);
                     db.SaveChanges();
@@ -104,7 +104,7 @@ namespace Vapers_Club.Controllers
         public ActionResult consultarproveedor(int id)
         {
             cListaProveedores lista = new cListaProveedores();
-            using (BaseDatosEntities db = new BaseDatosEntities())
+            using (BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 var listas = db.v_proveedores.FirstOrDefault(u=>u.id==id);
                 lista.id = listas.id;
@@ -119,7 +119,7 @@ namespace Vapers_Club.Controllers
         [HttpGet]
         public ActionResult eliminarproveedor(int id)
         {
-            using (BaseDatosEntities db = new BaseDatosEntities())
+            using (BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 db.sp_eliminarproveedor(id);
                 db.SaveChanges();
@@ -130,7 +130,7 @@ namespace Vapers_Club.Controllers
         public ActionResult agregarpp(int id)
         {
             Asignarproducto ap = new Asignarproducto();
-            using(BaseDatosEntities db= new BaseDatosEntities())
+            using(BaseDatosEntities1 db= new BaseDatosEntities1())
             {
                 var aps = db.proveedores.Find(id);
                 ap.id = aps.id;
@@ -147,7 +147,7 @@ namespace Vapers_Club.Controllers
                 {
                     return View(ap);
                 }
-                using (BaseDatosEntities db = new BaseDatosEntities())
+                using (BaseDatosEntities1 db = new BaseDatosEntities1())
                 {
                     db.sp_agregarproductoproveedor(ap.id, ap.nombre);
                     db.SaveChanges();
@@ -167,7 +167,7 @@ namespace Vapers_Club.Controllers
         public ActionResult consultarproductos(int id)
         {
             List<Productoproveedores> lista = null;
-            using (BaseDatosEntities db = new BaseDatosEntities())
+            using (BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 lista = (from p in db.v_prodprovee
                          where p.id == id
@@ -182,7 +182,7 @@ namespace Vapers_Club.Controllers
         [HttpGet]
         public ActionResult eliminaraprodpr(int id, string ip)
         {
-            using (BaseDatosEntities db = new BaseDatosEntities())
+            using (BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 db.sp_eliminarproductoproveedor(id,ip);
                 db.SaveChanges();

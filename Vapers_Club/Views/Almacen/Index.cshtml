@@ -1,0 +1,39 @@
+﻿@model List<Vapers_Club.Models.ViewModels.cListaAlmacenes>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Almacenes</h2>
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <input type="button" class="btn btn-primary btn-block btn-lg" onclick="document.location.href='@Url.Content("~/Almacen/Create")'" value="Nuevo Almacen" />
+    </div>
+    <div class="col-md-8">
+        <label>Nota: Para asignar un producto a almacenes seleccione la opcion de detalles en el almacen que desee</label>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Identificacion</th>
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var fila in Model)
+                {
+                    <tr>
+                        <td>@fila.id</td>
+                        <td>@fila.nombre</td>
+                        <td><input type="button" value="Consultar" class="btn btn-success" onclick="document.location.href='@Url.Content("~/Almacen/Details/"+fila.id)'" /></td>
+                        <td><input type="button" value="Editar" class="btn btn-primary" onclick="document.location.href='@Url.Content("~/Almacen/Update/"+fila.id)'" /></td>
+                        <td><input type="button" value="Eliminar" class="btn btn-danger" onclick="document.location.href='@Url.Content("~/Almacen/Delete/"+fila.id)'" /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <input type="button" value="Menu" class="btn btn-primary" style="background-color: #00ADA7" onclick="document.location.href='@Url.Content("~/Home/Menu")'" />
+    </div>
+</div>

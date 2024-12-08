@@ -12,34 +12,27 @@ namespace Vapers_Club.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class productos
+    public partial class proveedore
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public productos()
+        public proveedore()
         {
-            this.entregas = new HashSet<entregas>();
-            this.almacenes = new HashSet<almacenes>();
-            this.proveedores = new HashSet<proveedores>();
+            this.correos = new HashSet<correo>();
+            this.devoluciones = new HashSet<devolucione>();
+            this.telefonos = new HashSet<telefono>();
+            this.productos = new HashSet<producto>();
         }
     
         public int id { get; set; }
         public string nombre { get; set; }
-        public string descripcion { get; set; }
-        public int marca { get; set; }
-        public int categoria { get; set; }
-        public int cantidad { get; set; }
-        public int codigo { get; set; }
-        public string unidadmedida { get; set; }
-        public Nullable<System.DateTime> vencimiento { get; set; }
-        public decimal precio { get; set; }
     
-        public virtual categorias categorias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<entregas> entregas { get; set; }
-        public virtual marcas marcas { get; set; }
+        public virtual ICollection<correo> correos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<almacenes> almacenes { get; set; }
+        public virtual ICollection<devolucione> devoluciones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<proveedores> proveedores { get; set; }
+        public virtual ICollection<telefono> telefonos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<producto> productos { get; set; }
     }
 }

@@ -12,15 +12,14 @@ namespace Vapers_Club.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class clientes
+    public partial class cliente
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public clientes()
+        public cliente()
         {
-            this.correos = new HashSet<correos>();
-            this.telefonos = new HashSet<telefonos>();
-            this.devoluciones = new HashSet<devoluciones>();
-            this.direcciones = new HashSet<direcciones>();
+            this.correos = new HashSet<correo>();
+            this.telefonos = new HashSet<telefono>();
+            this.devoluciones = new HashSet<devolucione>();
         }
     
         public int id { get; set; }
@@ -28,12 +27,10 @@ namespace Vapers_Club.Models
         public string apellidos { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<correos> correos { get; set; }
+        public virtual ICollection<correo> correos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<telefonos> telefonos { get; set; }
+        public virtual ICollection<telefono> telefonos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<devoluciones> devoluciones { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<direcciones> direcciones { get; set; }
+        public virtual ICollection<devolucione> devoluciones { get; set; }
     }
 }

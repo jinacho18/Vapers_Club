@@ -4,41 +4,39 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="986ed7d26e0143bfa7e06346741b729e" Name="Diagram1">
-        <EntityTypeShape EntityType="ProyectoMDSModel.almacenes" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.auditoria" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.categorias" Width="1.5" PointX="3.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.clientes" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.correos" Width="1.5" PointX="10.5" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.devoluciones" Width="1.5" PointX="13.5" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.direcciones" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.entregas" Width="1.5" PointX="8.25" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.estados" Width="1.5" PointX="6" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.marcas" Width="1.5" PointX="3.75" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.productos" Width="1.5" PointX="6" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.proveedores" Width="1.5" PointX="8.25" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.rol" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.telefonos" Width="1.5" PointX="10.5" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.tipo_correos" Width="1.5" PointX="8.25" PointY="14.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.tipo_tel" Width="1.5" PointX="8.25" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.usuarios" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.v_almaprod" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.v_clientes" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.v_entregas" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.v_prodprovee" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.v_productos" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.v_proveedoresprod" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.v_usuarios" Width="1.5" PointX="12.75" PointY="6.75" IsExpanded="true" />
-        <AssociationConnector Association="ProyectoMDSModel.FK_direcalmacen" ManuallyRouted="false" />
+      <Diagram DiagramId="bfc525b66bf44b33baec7c031794c975" Name="Diagram1">
+        <EntityTypeShape EntityType="ProyectoMDSModel.almacene" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.auditoria" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.categoria" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.cliente" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.correo" Width="1.5" PointX="7.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.devolucione" Width="1.5" PointX="10.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.entrega" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.estado" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.marca" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.producto" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.proveedore" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.rol" Width="1.5" PointX="7.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.telefono" Width="1.5" PointX="7.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.tipo_correos" Width="1.5" PointX="5.25" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.tipo_tel" Width="1.5" PointX="5.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.usuario" Width="1.5" PointX="10" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.v_almaprod" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.v_clientes" Width="1.5" PointX="11.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.v_devolucion" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.v_entregas" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.v_prodprovee" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.v_productos" Width="1.5" PointX="7.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.v_proveedores" Width="1.5" PointX="9.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.v_proveedoresprod" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMDSModel.v_usuarios" Width="1.5" PointX="13.75" PointY="3.75" IsExpanded="true" />
         <AssociationConnector Association="ProyectoMDSModel.FK_categoria" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoMDSModel.FK_cliente" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoMDSModel.FK_clientes" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoMDSModel.FK_devocliente" ManuallyRouted="false" />
-        <AssociationConnector Association="ProyectoMDSModel.FK_direccliente" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoMDSModel.FK_prov" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoMDSModel.FK_tipocorreo" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoMDSModel.FK_devoproveedor" ManuallyRouted="false" />
-        <AssociationConnector Association="ProyectoMDSModel.FK_direcprovee" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoMDSModel.FK_estado" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoMDSModel.FK_idproducto" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoMDSModel.FK_marca" ManuallyRouted="false" />
@@ -47,7 +45,6 @@
         <AssociationConnector Association="ProyectoMDSModel.FK_tipo" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoMDSModel.almacenprod" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoMDSModel.proveedor_productos" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.v_proveedores" Width="1.5" PointX="0.75" PointY="14.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

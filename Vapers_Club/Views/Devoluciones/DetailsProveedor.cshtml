@@ -1,0 +1,45 @@
+﻿@model Vapers_Club.Models.ViewModels.cDevolucion
+@{
+    ViewBag.Title = "DetailsProveedor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Devolucion Proveedor</h2>
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.id)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.id)
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.proveedor)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.proveedor)
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.nproveedor)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.nproveedor)
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.razon)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.razon)
+    </div>
+</div>
+<br />
+<input type="button" value="Volver" class="btn btn-primary btn-block btn-lg" onclick="document.location.href='@Url.Content("~/Devoluciones/Index")'" />

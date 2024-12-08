@@ -28,7 +28,7 @@ namespace Vapers_Club.Controllers
                 return View("Login");
             }
 
-            using (BaseDatosEntities db = new BaseDatosEntities())
+            using (BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 var existenciaUsuario = db.usuarios.Where(p => p.cedula == login.userusuario && p.contra == login.ctrUsuario).FirstOrDefault();
 

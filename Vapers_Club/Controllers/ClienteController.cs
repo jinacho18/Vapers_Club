@@ -14,7 +14,7 @@ namespace Vapers_Club.Controllers
         public ActionResult mantCliente()
         {
             List<cListaCliente> lista = null;
-            using(BaseDatosEntities db = new BaseDatosEntities())
+            using(BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 lista = (from cl in db.v_clientes
                         select new cListaCliente
@@ -44,7 +44,7 @@ namespace Vapers_Club.Controllers
                 {
                     return View(ac);
                 }
-                using (BaseDatosEntities db = new BaseDatosEntities())
+                using (BaseDatosEntities1 db = new BaseDatosEntities1())
                 {
                     db.sp_agregarclientes(ac.nombre,ac.apellidos,ac.correo,ac.tipoc,ac.telefono,ac.tipot);
                     db.SaveChanges();
@@ -64,7 +64,7 @@ namespace Vapers_Club.Controllers
         public ActionResult actualizarcliente(int id)
         {
             cActualizarCliente ac= new cActualizarCliente();
-            using (BaseDatosEntities db = new BaseDatosEntities())
+            using (BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 var acs = db.v_clientes.FirstOrDefault(u => u.id == id);
                 ac.id=acs.id;
@@ -86,7 +86,7 @@ namespace Vapers_Club.Controllers
                 {
                     return View(acs);
                 }
-                using (BaseDatosEntities db = new BaseDatosEntities())
+                using (BaseDatosEntities1 db = new BaseDatosEntities1())
                 {
                     db.sp_actualizarcliente(acs.id,acs.nombre,acs.apellidos,acs.correo,acs.tipoc,acs.telefono,acs.tipot);
                     db.SaveChanges();
@@ -106,7 +106,7 @@ namespace Vapers_Club.Controllers
         public ActionResult consultarcliente(int id)
         {
             cListaCliente lista = new cListaCliente();
-            using (BaseDatosEntities db = new BaseDatosEntities())
+            using (BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 var listas = db.v_clientes.FirstOrDefault(u=>u.id==id);
                 lista.id = listas.id;
@@ -122,7 +122,7 @@ namespace Vapers_Club.Controllers
         [HttpGet]
         public ActionResult eliminarcliente(int id)
         {
-            using (BaseDatosEntities db = new BaseDatosEntities())
+            using (BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 db.sp_eliminarcliente(id);
                 db.SaveChanges();

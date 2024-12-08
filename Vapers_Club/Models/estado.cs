@@ -12,21 +12,18 @@ namespace Vapers_Club.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class almacenes
+    public partial class estado
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public almacenes()
+        public estado()
         {
-            this.direcciones = new HashSet<direcciones>();
-            this.productos = new HashSet<productos>();
+            this.entregas = new HashSet<entrega>();
         }
     
         public int id { get; set; }
-        public string nombre { get; set; }
+        public string desc_estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<direcciones> direcciones { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<productos> productos { get; set; }
+        public virtual ICollection<entrega> entregas { get; set; }
     }
 }

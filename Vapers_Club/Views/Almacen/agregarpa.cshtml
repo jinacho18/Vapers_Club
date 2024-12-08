@@ -1,0 +1,73 @@
+﻿@model Vapers_Club.Models.ViewModels.asignaralmacen
+@{
+    ViewBag.Title = "agregarpa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Asignar Producto-Almacen</h2>
+<br />
+<br />
+
+@if (ViewBag.ValorMensaje == 1)
+{
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title">Mensaje</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success">@ViewBag.MensajeProceso</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    if (ViewBag.ValorMensaje == 0)
+    {
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Mensaje</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger">@ViewBag.MensajeProceso</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+@using (Html.BeginForm("agregarpa", "Almacen", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-4">
+            <input type="submit" class="btn btn-success btn-block btn-lg" value="Asignar" />
+            <br />
+            <input type="button" value="Volver" class="btn btn-primary btn-block btn-lg" onclick="document.location.href='@Url.Content("~/Almacen/Index")'" style="background-color: #00ADA7; color: #ffffff" />
+        </div>
+        <div class="col-md-8">
+            @Html.HiddenFor(u => u.idalmacen)
+            @Html.LabelFor(u => u.producto)
+            @Html.TextBoxFor(u => u.producto, new { @class = "form-control" })
+            @Html.ValidationMessage("producto")
+            <br /><br />
+        </div>
+    </div>
+}
+@section scripts{
+    <script type="text/javascript">
+        $('#myModal').modal('show');
+    </script>
+}

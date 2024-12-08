@@ -17,6 +17,6 @@ namespace Vapers_Club.Models
         public int idalmacen { get; set; }
         public string nombre_almacen { get; set; }
         public int idprod { get; set; }
-        public string nombre_producto { get; set; }
+        public string nombre { get; set; }
     }
 }

@@ -1,0 +1,31 @@
+﻿@model Vapers_Club.Models.ViewModels.cAlmacen
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles del almacen</h2>
+<br />
+<br />
+
+<div class="row">
+    @Html.HiddenFor(model => model.Id)
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.nombre)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.nombre)
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.direccion)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.direccion)
+    </div>
+    <input type="button" value="Asignar Producto" class="btn btn-primary btn-block btn-lg" onclick="document.location.href='@Url.Content("~/Almacen/agregarpa/"+Model.Id)'" />
+    <input type="button" value="Productos" class="btn btn-primary btn-block btn-lg" onclick="document.location.href='@Url.Content("~/Almacen/consultarprodal/"+Model.Id)'" />
+    <input type="button" value="Volver" class="btn btn-primary btn-block btn-lg" onclick="document.location.href='@Url.Content("~/Almacen/Index")'" />
+</div>
+<br />

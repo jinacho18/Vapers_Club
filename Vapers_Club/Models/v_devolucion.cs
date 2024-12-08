@@ -12,16 +12,14 @@ namespace Vapers_Club.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class telefonos
+    public partial class v_devolucion
     {
         public int id { get; set; }
-        public Nullable<int> id_cliente { get; set; }
-        public Nullable<int> id_proveedor { get; set; }
-        public int telefono { get; set; }
-        public int tipo { get; set; }
-    
-        public virtual clientes clientes { get; set; }
-        public virtual proveedores proveedores { get; set; }
-        public virtual tipo_tel tipo_tel { get; set; }
+        public Nullable<int> cliente { get; set; }
+        public string nombre { get; set; }
+        public string apellidos { get; set; }
+        public Nullable<int> proveedor { get; set; }
+        public string nprove { get; set; }
+        public string razon { get; set; }
     }
 }

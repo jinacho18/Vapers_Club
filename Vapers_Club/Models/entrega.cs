@@ -12,13 +12,15 @@ namespace Vapers_Club.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class usuarios
+    public partial class entrega
     {
         public int id { get; set; }
-        public int cedula { get; set; }
-        public string contra { get; set; }
-        public int rol { get; set; }
+        public System.DateTime fecha_pedido { get; set; }
+        public int id_producto { get; set; }
+        public int cantidad { get; set; }
+        public int estado { get; set; }
     
-        public virtual rol rol1 { get; set; }
+        public virtual estado estado1 { get; set; }
+        public virtual producto producto { get; set; }
     }
 }

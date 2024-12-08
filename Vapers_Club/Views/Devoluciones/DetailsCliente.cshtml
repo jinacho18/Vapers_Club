@@ -1,0 +1,53 @@
+﻿@model Vapers_Club.Models.ViewModels.cDevolucion
+@{
+    ViewBag.Title = "DetailsCliente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Devolucion Cliente</h2>
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.id)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.id)
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.cliente)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.cliente)
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.ncliente)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.ncliente)
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.apellidos)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.apellidos)
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.razon)
+    </div>
+    <div class="col-md-8">
+        @Html.DisplayFor(model => model.razon)
+    </div>
+</div>
+<br />
+<input type="button" value="Volver" class="btn btn-primary btn-block btn-lg" onclick="document.location.href='@Url.Content("~/Devoluciones/Index")'" />

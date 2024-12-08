@@ -14,7 +14,7 @@ namespace Vapers_Club.Controllers
         public ActionResult mantMarca()
         {
             List<cListaMarca> lista = null;
-            using (BaseDatosEntities db = new BaseDatosEntities())
+            using (BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 lista = (from ma in db.marcas
                          select new cListaMarca
@@ -39,9 +39,9 @@ namespace Vapers_Club.Controllers
                 {
                     return View(am);
                 }
-                using (BaseDatosEntities db = new BaseDatosEntities())
+                using (BaseDatosEntities1 db = new BaseDatosEntities1())
                 {
-                    marcas ma = new marcas();
+                    marca ma = new marca();
                     ma.nombre = am.nombre;
                     db.marcas.Add(ma);
                     db.SaveChanges();
@@ -61,7 +61,7 @@ namespace Vapers_Club.Controllers
         public ActionResult actualizarmarca(int id)
         {
             cActualizarMarca am = new cActualizarMarca();
-            using (BaseDatosEntities db = new BaseDatosEntities())
+            using (BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 var ams = db.marcas.Find(id);
                 am.id = ams.id;
@@ -78,7 +78,7 @@ namespace Vapers_Club.Controllers
                 {
                     return View(ams);
                 }
-                using (BaseDatosEntities db = new BaseDatosEntities())
+                using (BaseDatosEntities1 db = new BaseDatosEntities1())
                 {
                     var am = db.marcas.Find(ams.id);
                     am.id = ams.id;
@@ -101,7 +101,7 @@ namespace Vapers_Club.Controllers
         public ActionResult consultarmarca(int id)
         {
             cListaMarca lista = new cListaMarca();
-            using (BaseDatosEntities db = new BaseDatosEntities())
+            using (BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 var listas = db.marcas.Find(id);
                 lista.id = listas.id;
@@ -112,7 +112,7 @@ namespace Vapers_Club.Controllers
         [HttpGet]
         public ActionResult eliminarmarca(int id)
         {
-            using (BaseDatosEntities db = new BaseDatosEntities())
+            using (BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 var marcas = db.marcas.Find(id);
                 db.marcas.Remove(marcas);
