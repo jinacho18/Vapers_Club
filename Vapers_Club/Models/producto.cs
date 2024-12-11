@@ -24,7 +24,6 @@ namespace Vapers_Club.Models
     
         public int id { get; set; }
         public string nombre { get; set; }
-        public string descripcion { get; set; }
         public int marca { get; set; }
         public int categoria { get; set; }
         public int cantidad { get; set; }

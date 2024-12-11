@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ProyectoMDSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ProyectoMDSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="almacenes">
           <Key>
             <PropertyRef Name="id" />
@@ -95,7 +95,6 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="marca" Type="int" Nullable="false" />
           <Property Name="categoria" Type="int" Nullable="false" />
           <Property Name="cantidad" Type="int" Nullable="false" />
@@ -778,8 +777,7 @@ warning 6002: The table/view 'ProyectoMDS.dbo.v_usuarios' does not have a primar
             <End Role="correos" EntitySet="correos" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProyectoMDSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -790,7 +788,7 @@ warning 6002: The table/view 'ProyectoMDS.dbo.v_usuarios' does not have a primar
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="productos" Relationship="Self.almacenprod" FromRole="almacenes" ToRole="productos" />
+          <NavigationProperty Name="productos" Relationship="ProyectoMDSModel.almacenprod" FromRole="almacene" ToRole="producto" />
         </EntityType>
         <EntityType Name="auditoria">
           <Key>
@@ -808,7 +806,7 @@ warning 6002: The table/view 'ProyectoMDS.dbo.v_usuarios' does not have a primar
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="productos" Relationship="Self.FK_categoria" FromRole="categorias" ToRole="productos" />
+          <NavigationProperty Name="productos" Relationship="ProyectoMDSModel.FK_categoria" FromRole="categoria" ToRole="producto" />
         </EntityType>
         <EntityType Name="cliente">
           <Key>
@@ -855,7 +853,7 @@ warning 6002: The table/view 'ProyectoMDS.dbo.v_usuarios' does not have a primar
           <Property Name="cantidad" Type="Int32" Nullable="false" />
           <Property Name="estado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="estado1" Relationship="Self.FK_estado" FromRole="entregas" ToRole="estados" />
-          <NavigationProperty Name="producto" Relationship="Self.FK_idproducto" FromRole="entregas" ToRole="productos" />
+          <NavigationProperty Name="producto" Relationship="ProyectoMDSModel.FK_idproducto" FromRole="entrega" ToRole="producto" />
         </EntityType>
         <EntityType Name="estado">
           <Key>
@@ -871,27 +869,7 @@ warning 6002: The table/view 'ProyectoMDS.dbo.v_usuarios' does not have a primar
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="productos" Relationship="Self.FK_marca" FromRole="marcas" ToRole="productos" />
-        </EntityType>
-        <EntityType Name="producto">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="marca" Type="Int32" Nullable="false" />
-          <Property Name="categoria" Type="Int32" Nullable="false" />
-          <Property Name="cantidad" Type="Int32" Nullable="false" />
-          <Property Name="codigo" Type="Int32" Nullable="false" />
-          <Property Name="unidadmedida" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="vencimiento" Type="DateTime" Precision="0" />
-          <Property Name="precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <NavigationProperty Name="categoria1" Relationship="Self.FK_categoria" FromRole="productos" ToRole="categorias" />
-          <NavigationProperty Name="entregas" Relationship="Self.FK_idproducto" FromRole="productos" ToRole="entregas" />
-          <NavigationProperty Name="marca1" Relationship="Self.FK_marca" FromRole="productos" ToRole="marcas" />
-          <NavigationProperty Name="almacenes" Relationship="Self.almacenprod" FromRole="productos" ToRole="almacenes" />
-          <NavigationProperty Name="proveedores" Relationship="Self.proveedor_productos" FromRole="productos" ToRole="proveedores" />
+          <NavigationProperty Name="productos" Relationship="ProyectoMDSModel.FK_marca" FromRole="marca" ToRole="producto" />
         </EntityType>
         <EntityType Name="proveedore">
           <Key>
@@ -902,7 +880,7 @@ warning 6002: The table/view 'ProyectoMDS.dbo.v_usuarios' does not have a primar
           <NavigationProperty Name="correos" Relationship="Self.FK_prov" FromRole="proveedores" ToRole="correos" />
           <NavigationProperty Name="devoluciones" Relationship="Self.FK_devoproveedor" FromRole="proveedores" ToRole="devoluciones" />
           <NavigationProperty Name="telefonos" Relationship="Self.FK_proveedor" FromRole="proveedores" ToRole="telefonos" />
-          <NavigationProperty Name="productos" Relationship="Self.proveedor_productos" FromRole="proveedores" ToRole="productos" />
+          <NavigationProperty Name="productos" Relationship="ProyectoMDSModel.proveedor_productos" FromRole="proveedore" ToRole="producto" />
         </EntityType>
         <EntityType Name="rol">
           <Key>
@@ -1079,18 +1057,6 @@ warning 6002: The table/view 'ProyectoMDS.dbo.v_usuarios' does not have a primar
           <Property Name="cedula" Type="Int32" Nullable="false" />
           <Property Name="desc_rol" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <Association Name="FK_categoria">
-          <End Role="categorias" Type="Self.categoria" Multiplicity="1" />
-          <End Role="productos" Type="Self.producto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="categorias">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="productos">
-              <PropertyRef Name="categoria" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_cliente">
           <End Role="clientes" Type="Self.cliente" Multiplicity="0..1" />
           <End Role="correos" Type="Self.correo" Multiplicity="*" />
@@ -1175,30 +1141,6 @@ warning 6002: The table/view 'ProyectoMDS.dbo.v_usuarios' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_idproducto">
-          <End Role="productos" Type="Self.producto" Multiplicity="1" />
-          <End Role="entregas" Type="Self.entrega" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="productos">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="entregas">
-              <PropertyRef Name="id_producto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_marca">
-          <End Role="marcas" Type="Self.marca" Multiplicity="1" />
-          <End Role="productos" Type="Self.producto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="marcas">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="productos">
-              <PropertyRef Name="marca" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_proveedor">
           <End Role="proveedores" Type="Self.proveedore" Multiplicity="0..1" />
           <End Role="telefonos" Type="Self.telefono" Multiplicity="*" />
@@ -1235,14 +1177,6 @@ warning 6002: The table/view 'ProyectoMDS.dbo.v_usuarios' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="almacenprod">
-          <End Role="almacenes" Type="Self.almacene" Multiplicity="*" />
-          <End Role="productos" Type="Self.producto" Multiplicity="*" />
-        </Association>
-        <Association Name="proveedor_productos">
-          <End Role="productos" Type="Self.producto" Multiplicity="*" />
-          <End Role="proveedores" Type="Self.proveedore" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="BaseDatosEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="almacenes" EntityType="Self.almacene" />
           <EntitySet Name="auditorias" EntityType="Self.auditoria" />
@@ -1253,7 +1187,6 @@ warning 6002: The table/view 'ProyectoMDS.dbo.v_usuarios' does not have a primar
           <EntitySet Name="entregas" EntityType="Self.entrega" />
           <EntitySet Name="estados" EntityType="Self.estado" />
           <EntitySet Name="marcas" EntityType="Self.marca" />
-          <EntitySet Name="productos" EntityType="Self.producto" />
           <EntitySet Name="proveedores" EntityType="Self.proveedore" />
           <EntitySet Name="rols" EntityType="Self.rol" />
           <EntitySet Name="telefonos" EntityType="Self.telefono" />
@@ -1269,10 +1202,6 @@ warning 6002: The table/view 'ProyectoMDS.dbo.v_usuarios' does not have a primar
           <EntitySet Name="v_proveedores" EntityType="Self.v_proveedores" />
           <EntitySet Name="v_proveedoresprod" EntityType="Self.v_proveedoresprod" />
           <EntitySet Name="v_usuarios" EntityType="Self.v_usuarios" />
-          <AssociationSet Name="FK_categoria" Association="Self.FK_categoria">
-            <End Role="categorias" EntitySet="categorias" />
-            <End Role="productos" EntitySet="productos" />
-          </AssociationSet>
           <AssociationSet Name="FK_cliente" Association="Self.FK_cliente">
             <End Role="clientes" EntitySet="clientes" />
             <End Role="correos" EntitySet="correos" />
@@ -1301,14 +1230,6 @@ warning 6002: The table/view 'ProyectoMDS.dbo.v_usuarios' does not have a primar
             <End Role="estados" EntitySet="estados" />
             <End Role="entregas" EntitySet="entregas" />
           </AssociationSet>
-          <AssociationSet Name="FK_idproducto" Association="Self.FK_idproducto">
-            <End Role="productos" EntitySet="productos" />
-            <End Role="entregas" EntitySet="entregas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_marca" Association="Self.FK_marca">
-            <End Role="marcas" EntitySet="marcas" />
-            <End Role="productos" EntitySet="productos" />
-          </AssociationSet>
           <AssociationSet Name="FK_proveedor" Association="Self.FK_proveedor">
             <End Role="proveedores" EntitySet="proveedores" />
             <End Role="telefonos" EntitySet="telefonos" />
@@ -1320,14 +1241,6 @@ warning 6002: The table/view 'ProyectoMDS.dbo.v_usuarios' does not have a primar
           <AssociationSet Name="FK_tipo" Association="Self.FK_tipo">
             <End Role="tipo_tel" EntitySet="tipo_tel" />
             <End Role="telefonos" EntitySet="telefonos" />
-          </AssociationSet>
-          <AssociationSet Name="almacenprod" Association="Self.almacenprod">
-            <End Role="almacenes" EntitySet="almacenes" />
-            <End Role="productos" EntitySet="productos" />
-          </AssociationSet>
-          <AssociationSet Name="proveedor_productos" Association="Self.proveedor_productos">
-            <End Role="productos" EntitySet="productos" />
-            <End Role="proveedores" EntitySet="proveedores" />
           </AssociationSet>
           <FunctionImport Name="sp_actualizarcliente">
             <Parameter Name="id" Mode="In" Type="Int32" />
@@ -1408,26 +1321,110 @@ warning 6002: The table/view 'ProyectoMDS.dbo.v_usuarios' does not have a primar
             <Parameter Name="tipot" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_eliminarcliente">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_eliminarmacenprod">
-            <Parameter Name="alma" Mode="In" Type="Int32" />
+          <Parameter Name="alma" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_eliminarmacenprod2">
             <Parameter Name="alma" Mode="In" Type="Int32" />
             <Parameter Name="prod" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_eliminarproducto">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_eliminarproductoproveedor">
             <Parameter Name="id" Mode="In" Type="Int32" />
             <Parameter Name="producto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_eliminarproveedor">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="productos" EntityType="ProyectoMDSModel.producto" />
+          <AssociationSet Name="FK_categoria" Association="ProyectoMDSModel.FK_categoria">
+            <End Role="categoria" EntitySet="categorias" />
+            <End Role="producto" EntitySet="productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_idproducto" Association="ProyectoMDSModel.FK_idproducto">
+            <End Role="producto" EntitySet="productos" />
+            <End Role="entrega" EntitySet="entregas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_marca" Association="ProyectoMDSModel.FK_marca">
+            <End Role="marca" EntitySet="marcas" />
+            <End Role="producto" EntitySet="productos" />
+          </AssociationSet>
+          <AssociationSet Name="almacenprod" Association="ProyectoMDSModel.almacenprod">
+            <End Role="almacene" EntitySet="almacenes" />
+            <End Role="producto" EntitySet="productos" />
+          </AssociationSet>
+          <AssociationSet Name="proveedor_productos" Association="ProyectoMDSModel.proveedor_productos">
+            <End Role="producto" EntitySet="productos" />
+            <End Role="proveedore" EntitySet="proveedores" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="producto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="marca" Type="Int32" Nullable="false" />
+          <Property Name="categoria" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" Nullable="false" />
+          <Property Name="codigo" Type="Int32" Nullable="false" />
+          <Property Name="unidadmedida" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="vencimiento" Type="DateTime" Precision="0" />
+          <Property Name="precio" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="categoria1" Relationship="ProyectoMDSModel.FK_categoria" FromRole="producto" ToRole="categoria" />
+          <NavigationProperty Name="entregas" Relationship="ProyectoMDSModel.FK_idproducto" FromRole="producto" ToRole="entrega" />
+          <NavigationProperty Name="marca1" Relationship="ProyectoMDSModel.FK_marca" FromRole="producto" ToRole="marca" />
+          <NavigationProperty Name="almacenes" Relationship="ProyectoMDSModel.almacenprod" FromRole="producto" ToRole="almacene" />
+          <NavigationProperty Name="proveedores" Relationship="ProyectoMDSModel.proveedor_productos" FromRole="producto" ToRole="proveedore" />
+        </EntityType>
+        <Association Name="FK_categoria">
+          <End Type="ProyectoMDSModel.categoria" Role="categoria" Multiplicity="1" />
+          <End Type="ProyectoMDSModel.producto" Role="producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="producto">
+              <PropertyRef Name="categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_idproducto">
+          <End Type="ProyectoMDSModel.producto" Role="producto" Multiplicity="1" />
+          <End Type="ProyectoMDSModel.entrega" Role="entrega" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="producto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="entrega">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_marca">
+          <End Type="ProyectoMDSModel.marca" Role="marca" Multiplicity="1" />
+          <End Type="ProyectoMDSModel.producto" Role="producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="marca">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="producto">
+              <PropertyRef Name="marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="almacenprod">
+          <End Type="ProyectoMDSModel.almacene" Role="almacene" Multiplicity="*" />
+          <End Type="ProyectoMDSModel.producto" Role="producto" Multiplicity="*" />
+        </Association>
+        <Association Name="proveedor_productos">
+          <End Type="ProyectoMDSModel.producto" Role="producto" Multiplicity="*" />
+          <End Type="ProyectoMDSModel.proveedore" Role="proveedore" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1516,22 +1513,6 @@ warning 6002: The table/view 'ProyectoMDS.dbo.v_usuarios' does not have a primar
               <MappingFragment StoreEntitySet="marcas">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="productos">
-            <EntityTypeMapping TypeName="ProyectoMDSModel.producto">
-              <MappingFragment StoreEntitySet="productos">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="marca" ColumnName="marca" />
-                <ScalarProperty Name="categoria" ColumnName="categoria" />
-                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
-                <ScalarProperty Name="unidadmedida" ColumnName="unidadmedida" />
-                <ScalarProperty Name="vencimiento" ColumnName="vencimiento" />
-                <ScalarProperty Name="precio" ColumnName="precio" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1689,22 +1670,6 @@ warning 6002: The table/view 'ProyectoMDS.dbo.v_usuarios' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="almacenprod" TypeName="ProyectoMDSModel.almacenprod" StoreEntitySet="almacenprod">
-            <EndProperty Name="almacenes">
-              <ScalarProperty Name="id" ColumnName="idalmacen" />
-            </EndProperty>
-            <EndProperty Name="productos">
-              <ScalarProperty Name="id" ColumnName="idprod" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="proveedor_productos" TypeName="ProyectoMDSModel.proveedor_productos" StoreEntitySet="proveedor_productos">
-            <EndProperty Name="productos">
-              <ScalarProperty Name="id" ColumnName="id_producto" />
-            </EndProperty>
-            <EndProperty Name="proveedores">
-              <ScalarProperty Name="id" ColumnName="id_proveedor" />
-            </EndProperty>
-          </AssociationSetMapping>
           <FunctionImportMapping FunctionImportName="sp_actualizarcliente" FunctionName="ProyectoMDSModel.Store.sp_actualizarcliente" />
           <FunctionImportMapping FunctionImportName="sp_actualizarentrega" FunctionName="ProyectoMDSModel.Store.sp_actualizarentrega" />
           <FunctionImportMapping FunctionImportName="sp_actualizarmacenprod" FunctionName="ProyectoMDSModel.Store.sp_actualizarmacenprod" />
@@ -1722,6 +1687,37 @@ warning 6002: The table/view 'ProyectoMDS.dbo.v_usuarios' does not have a primar
           <FunctionImportMapping FunctionImportName="sp_eliminarproducto" FunctionName="ProyectoMDSModel.Store.sp_eliminarproducto" />
           <FunctionImportMapping FunctionImportName="sp_eliminarproductoproveedor" FunctionName="ProyectoMDSModel.Store.sp_eliminarproductoproveedor" />
           <FunctionImportMapping FunctionImportName="sp_eliminarproveedor" FunctionName="ProyectoMDSModel.Store.sp_eliminarproveedor" />
+          <EntitySetMapping Name="productos">
+            <EntityTypeMapping TypeName="ProyectoMDSModel.producto">
+              <MappingFragment StoreEntitySet="productos">
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="vencimiento" ColumnName="vencimiento" />
+                <ScalarProperty Name="unidadmedida" ColumnName="unidadmedida" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="almacenprod" TypeName="ProyectoMDSModel.almacenprod" StoreEntitySet="almacenprod">
+            <EndProperty Name="producto">
+              <ScalarProperty Name="id" ColumnName="idprod" />
+            </EndProperty>
+            <EndProperty Name="almacene">
+              <ScalarProperty Name="id" ColumnName="idalmacen" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="proveedor_productos" TypeName="ProyectoMDSModel.proveedor_productos" StoreEntitySet="proveedor_productos">
+            <EndProperty Name="proveedore">
+              <ScalarProperty Name="id" ColumnName="id_proveedor" />
+            </EndProperty>
+            <EndProperty Name="producto">
+              <ScalarProperty Name="id" ColumnName="id_producto" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

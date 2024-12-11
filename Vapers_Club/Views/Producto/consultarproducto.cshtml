@@ -8,6 +8,8 @@
 <br />
 <br />
 
+@Html.HiddenFor(model => model.id)
+
 <div class="row">
     <div class="col-md-4">
         @Html.LabelFor(model => model.nombre)
@@ -52,6 +54,8 @@
         @Html.DisplayFor(model => model.precio)
     </div>
 </div>
+
+<input type="button" value="Proveedores" class="btn btn-default btn-block btn-lg" onclick="document.location.href='@Url.Content("~/Producto/consultarproveedores/"+Model.id)'"   />
 
 <br />
 <input type="button" value="Volver" class="btn btn-default btn-block btn-lg" onclick="document.location.href='@Url.Content("~/Producto/mantProducto")'" />

@@ -14,7 +14,6 @@
         <EntityTypeShape EntityType="ProyectoMDSModel.entrega" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ProyectoMDSModel.estado" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ProyectoMDSModel.marca" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoMDSModel.producto" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ProyectoMDSModel.proveedore" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ProyectoMDSModel.rol" Width="1.5" PointX="7.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ProyectoMDSModel.telefono" Width="1.5" PointX="7.5" PointY="5.25" IsExpanded="true" />
@@ -30,7 +29,6 @@
         <EntityTypeShape EntityType="ProyectoMDSModel.v_proveedores" Width="1.5" PointX="9.75" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ProyectoMDSModel.v_proveedoresprod" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ProyectoMDSModel.v_usuarios" Width="1.5" PointX="13.75" PointY="3.75" IsExpanded="true" />
-        <AssociationConnector Association="ProyectoMDSModel.FK_categoria" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoMDSModel.FK_cliente" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoMDSModel.FK_clientes" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoMDSModel.FK_devocliente" ManuallyRouted="false" />
@@ -38,14 +36,16 @@
         <AssociationConnector Association="ProyectoMDSModel.FK_tipocorreo" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoMDSModel.FK_devoproveedor" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoMDSModel.FK_estado" ManuallyRouted="false" />
-        <AssociationConnector Association="ProyectoMDSModel.FK_idproducto" ManuallyRouted="false" />
-        <AssociationConnector Association="ProyectoMDSModel.FK_marca" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoMDSModel.FK_proveedor" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoMDSModel.FK_rol" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoMDSModel.FK_tipo" ManuallyRouted="false" />
-        <AssociationConnector Association="ProyectoMDSModel.almacenprod" ManuallyRouted="false" />
-        <AssociationConnector Association="ProyectoMDSModel.proveedor_productos" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="ProyectoMDSModel.producto" Width="1.5" PointX="3" PointY="5.5" />
+        <AssociationConnector Association="ProyectoMDSModel.FK_categoria" />
+        <AssociationConnector Association="ProyectoMDSModel.FK_idproducto" />
+        <AssociationConnector Association="ProyectoMDSModel.FK_marca" />
+        <AssociationConnector Association="ProyectoMDSModel.almacenprod" />
+        <AssociationConnector Association="ProyectoMDSModel.proveedor_productos" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

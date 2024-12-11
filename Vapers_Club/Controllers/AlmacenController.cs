@@ -121,23 +121,24 @@ namespace Vapers_Club.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            using (BaseDatosEntities1 db = new BaseDatosEntities1()) 
+            using (BaseDatosEntities1 db = new BaseDatosEntities1())
             {
                 var productos = db.v_almaprod.FirstOrDefault(u => u.idalmacen == id);
                 if (productos != null)
                 {
                     db.sp_eliminarmacenprod(id);
-                    db.almacenes.Find(id);
-                    db.SaveChanges();
                 }
-                else
+                var almacen = db.almacenes.Find(id);
+                if (almacen != null)
                 {
-                    db.almacenes.Find(id);
-                    db.SaveChanges();
+                    db.almacenes.Remove(almacen); 
+                    db.SaveChanges(); 
                 }
             }
+
             return RedirectToAction("Index", "Almacen");
         }
+
 
         [HttpGet]
         public ActionResult agregarpa(int id)

@@ -43,22 +43,39 @@ namespace Vapers_Club.Controllers
                 {
                     return View(ap);
                 }
+
                 using (BaseDatosEntities1 db = new BaseDatosEntities1())
                 {
-                    db.sp_agregarproducto(ap.nombre, ap.marca, ap.categ, ap.cantidad, ap.codigo, ap.unidadmedida, ap.vencimiento, ap.precio);
-                    db.SaveChanges();
-                    ViewBag.ValorMensaje = 1;
-                    ViewBag.MensajeProceso = "Producto agregado correctamente";
+                    // Usar una transacción explícita si es necesario
+                    using (var transaction = db.Database.BeginTransaction())
+                    {
+                        try
+                        {
+                            db.sp_agregarproducto(ap.nombre, ap.marca, ap.categ, ap.cantidad, ap.codigo, ap.unidadmedida, ap.vencimiento, ap.precio);
+                            db.SaveChanges();  // Si no es necesario debido al procedimiento almacenado, puedes quitarlo
+                            transaction.Commit(); // Confirmar la transacción
+                            ViewBag.ValorMensaje = 1;
+                            ViewBag.MensajeProceso = "Producto agregado correctamente";
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback(); // Revertir en caso de error
+                            ViewBag.ValorMensaje = 0;
+                            ViewBag.MensajeProceso = "Error al agregar el producto: " + ex.Message;
+                        }
+                    }
                 }
+
                 return View(ap);
             }
             catch (Exception ex)
             {
                 ViewBag.ValorMensaje = 0;
-                ViewBag.MensajeProceso = "Error al agregar " + ex;
+                ViewBag.MensajeProceso = "Error inesperado: " + ex.Message;
                 return View(ap);
             }
         }
+
         [HttpGet]
         public ActionResult actualizarproducto(int id)
         {

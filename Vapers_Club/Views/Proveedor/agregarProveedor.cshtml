@@ -67,7 +67,13 @@ else if (ViewBag.ValorMensaje == 0)
             <br /><br />
 
             @Html.LabelFor(u => u.tipot)
-            @Html.TextBoxFor(u => u.tipot, new { @class = "form-control" })
+            @Html.DropDownListFor(u => u.tipot, new List<SelectListItem>
+       {
+                    new SelectListItem() { Text = "Personal", Value = "1" },
+                    new SelectListItem() { Text = "Trabajo", Value = "2" },
+                    new SelectListItem() { Text = "Casa", Value = "3" },
+                    new SelectListItem() { Text = "Otro", Value = "4" }
+            }, new { @class = "form-control" })
             @Html.ValidationMessage("tipot")
             <br /><br />
 
@@ -77,7 +83,12 @@ else if (ViewBag.ValorMensaje == 0)
             <br /><br />
 
             @Html.LabelFor(u => u.tipoc)
-            @Html.TextBoxFor(u => u.tipoc, new { @class = "form-control" })
+            @Html.DropDownListFor(u => u.tipoc, new List<SelectListItem>
+       {
+                    new SelectListItem() { Text = "Personal", Value = "1" },
+                    new SelectListItem() { Text = "Empresarial", Value = "2" },
+                    new SelectListItem() { Text = "Otro", Value = "3" }
+            }, new { @class = "form-control" })
             @Html.ValidationMessage("tipoc")
             <br /><br />
         </div>

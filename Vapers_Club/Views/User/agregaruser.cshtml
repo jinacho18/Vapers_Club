@@ -71,8 +71,8 @@ else
             @Html.DropDownListFor(u => u.rol, new List<SelectListItem>
             {
                 new SelectListItem(){Text="Administrador", Value="1"},
-                new SelectListItem(){Text="Supervisor", Value="2"},
-                new SelectListItem(){Text="Empleado", Value="3"}
+                new SelectListItem(){Text="Usuario", Value="2"},
+                new SelectListItem(){Text="Contabilidad", Value="3"}
             }, new { @class = "form-control" })
             @Html.ValidationMessage("rol")
             <br /><br />

@@ -28,19 +28,20 @@
             <tbody>
                 @foreach (var fila in Model)
                 {
-                    <tr>
-                        <td>@fila.id</td>
-                        <td>@fila.nombre</td>
-                        <td>@fila.telefono</td>
-                        <td>@fila.tipot</td>
-                        <td>@fila.correo</td>
-                        <td>@fila.tipoc</td>
-                        <td>
-                            <input type="button" value="Consultar" class="btn btn-default" onclick="document.location.href='@Url.Content("~/Proveedor/consultarProveedor/"+fila.id)'" />
-                            <input type="button" value="Editar" class="btn btn-primary" onclick="document.location.href='@Url.Content("~/Proveedor/actualizarProveedor/"+fila.id)'" />
-                            <input type="button" value="Eliminar" class="btn btn-danger" onclick="document.location.href='@Url.Content("~/Proveedor/eliminarProveedor/"+fila.id)'" />
-                        </td>
-                    </tr>
+                <tr>
+                    <td>@fila.id</td>
+                    <td>@fila.nombre</td>
+                    <td>@fila.telefono</td>
+                    <td>@fila.tipot</td>
+                    <td>@fila.correo</td>
+                    <td>@fila.tipoc</td>
+                    <td>
+                        <input type="button" value="Consultar" class="btn btn-default" onclick="document.location.href='@Url.Content("~/Proveedor/consultarProveedor/"+fila.id)'" />
+                        <input type="button" value="Editar" class="btn btn-primary" onclick="document.location.href='@Url.Content("~/Proveedor/actualizarProveedor/"+fila.id)'" />
+                        <input type="button" value="Eliminar" class="btn btn-danger" onclick="document.location.href='@Url.Content("~/Proveedor/eliminarProveedor/"+fila.id)'" />
+                        <input type="button" value="Asignar Produco" class="btn btn-primary" onclick="document.location.href='@Url.Content("~/Proveedor/agregarpp/"+fila.id)'" />
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
