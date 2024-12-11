@@ -38,7 +38,7 @@ namespace Vapers_Club.Controllers
                     {
                         Session["ROL"] = "Administrador";
                         Session.Timeout = 45;
-                        return RedirectToAction("Menu", "Home");
+                        return RedirectToAction("Index", "Home");
                     }
                     else
                     {

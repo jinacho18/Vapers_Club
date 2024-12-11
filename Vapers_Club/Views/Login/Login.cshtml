@@ -1,33 +1,81 @@
 ﻿@model Vapers_Club.Models.ViewModels.cLogin
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Inicio de Sesión";
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.HideNavigationBar = true;
 }
 
 <style>
+    /* Fondo del Jumbotron con un degradado más suave */
     .jumbotron {
-        background: linear-gradient(to bottom right, #8F20A2, #00ADA7); /* Cambia los colores degradados según tus preferencias */
+        background: linear-gradient(135deg, #ff66cc, #ff3399, #ff00cc); /* Degradado con más tonos de rosa */
         padding: 40px;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Agrega una sombra suave */
+        border-radius: 15px;
+        box-shadow: 0 0 30px rgba(255, 102, 204, 0.5); /* Sombra más grande */
         text-align: center;
-        color: #333; /* Color de texto */
+        color: #fff;
     }
 
+    /* Título con efecto neón menos saturado */
     h1 {
-        font-size: 2.5em; /* Tamaño del título */
-        margin-bottom: 20px; /* Espaciado inferior */
-        font-family: 'Arial', sans-serif; /* Fuente del título */
+        font-size: 3rem;
+        margin-bottom: 20px;
+        font-family: 'Arial', sans-serif;
+        color: #fff;
+        text-shadow: 0 0 10px #ff66cc, 0 0 20px #ff66cc, 0 0 30px #ff66cc, 0 0 40px #ff66cc;
     }
 
+    /* Texto descriptivo con sombra neón más suave */
     p {
-        font-size: 1.2em; /* Tamaño del texto */
-        line-height: 1.6; /* Altura de línea */
-        font-family: 'Arial', sans-serif; /* Fuente del texto */
+        font-size: 1.2em;
+        line-height: 1.6;
+        font-family: 'Arial', sans-serif;
+        color: #fff;
+        text-shadow: 0 0 5px #ff66cc, 0 0 10px #ff66cc, 0 0 15px #ff66cc;
+    }
+
+    /* Botones con color azul neón más suave y menos saturado */
+    .btn-neon {
+        background-color: #00d4ff; /* Azul más suave */
+        border: 2px solid #00d4ff; /* Borde azul suave */
+        color: #fff;
+        font-weight: bold;
+        font-size: 1.2em;
+        box-shadow: 0 0 5px #00d4ff, 0 0 10px #00d4ff, 0 0 15px #00d4ff; /* Sombra azul suave */
+        transition: all 0.2s ease-in-out;
+        margin-bottom: 15px; /* Separa un poco los botones */
+    }
+
+        /* Efecto de hover para los botones, con color ligeramente más fuerte */
+        .btn-neon:hover {
+            background-color: #00a3cc; /* Azul más intenso en hover */
+            border: 2px solid #00a3cc;
+            color: #fff;
+            box-shadow: 0 0 10px #00a3cc, 0 0 20px #00a3cc, 0 0 25px #00a3cc;
+        }
+
+    /* Entrada de texto con borde rosado y sombra neón más suave */
+    .form-control {
+        border: 2px solid #ff66cc;
+        background-color: #222;
+        color: #fff;
+        font-size: 1.2em;
+        box-shadow: 0 0 10px #ff66cc, 0 0 20px #ff66cc;
+    }
+
+        .form-control:focus {
+            border-color: #ff66cc;
+            box-shadow: 0 0 15px #ff66cc;
+            background-color: #333;
+        }
+
+    /* Estilo para las validaciones */
+    .validation-message {
+        color: #ff66cc;
+        font-weight: bold;
+        text-shadow: 0 0 5px #ff66cc;
     }
 </style>
-
 
 <br />
 @if (ViewBag.ValorMensaje == 1)
@@ -47,7 +95,8 @@
                 </div>
             </div>
         </div>
-    </div> }
+    </div>
+}
 else
 {
     if (ViewBag.ValorMensaje == 0)
@@ -67,15 +116,17 @@ else
                     </div>
                 </div>
             </div>
-        </div>}
+        </div>
+    }
 }
 
 <br />
 
 <div class="jumbotron text-center">
-    <h1>LOGIN</h1>
+    <h1>INICIO DE SESIÓN</h1>
     <p class="lead">Ingrese su usuario y contraseña</p>
 </div>
+
 @using (Html.BeginForm("Ingresar", "Login", FormMethod.Post))
 {
     <div class="container">
@@ -84,21 +135,21 @@ else
                 <div class="form-group">
                     @Html.LabelFor(u => u.userusuario)
                     @Html.TextBoxFor(u => u.userusuario, new { @class = "form-control" })
-                    @Html.ValidationMessage("UserUsuario", new { style = "color:red; font-weight: bold;" })
+                    @Html.ValidationMessage("UserUsuario", new { @class = "validation-message" })
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(u => u.ctrUsuario)
                     @Html.PasswordFor(u => u.ctrUsuario, new { @class = "form-control" })
-                    @Html.ValidationMessage("CtrUsuario", new { style = "color:red; font-weight: bold;" })
+                    @Html.ValidationMessage("CtrUsuario", new { @class = "validation-message" })
                 </div>
 
-
-                <input type="submit" class="btn btn-primary btn-block btn-lg" value="Iniciar Sesión" style="background-color: #00ADA7" />
-                <input type="button" class="btn btn-primary btn-block btn-lg" value="Volver" style="background-color: #00ADA7" onclick="document.location.href='@Url.Content("~/")'" />
+                <input type="submit" class="btn btn-neon btn-block btn-lg" value="Iniciar Sesión" />
+                <input type="button" class="btn btn-neon btn-block btn-lg" value="Volver" onclick="document.location.href='@Url.Content("~/")'" />
             </div>
         </div>
-    </div>}
+    </div>
+}
 
 @section Scripts {
     <script type="text/javascript">$('#myModal').modal('show');</script>
